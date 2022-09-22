@@ -28,17 +28,16 @@ public class SecteurActiviteServiceImplTest {
 
         List<SecteurActivite> secteurActivites = secteurActiviteService.retrieveAllSecteurActivite();
         int expected = secteurActivites.size();
-        SecteurActivite sa = new SecteurActivite(1L,"3a","Papier");
+        SecteurActivite sa = new SecteurActivite("3a","Papier");
         SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
-        assertEquals(expected + 1, secteurActiviteService.retrieveAllSecteurActivite().size());
         secteurActiviteService.deleteSecteurActivite(secteurActivite.getIdSecteurActivite());
 
     }
     @Test
-    public void testAddStock()throws ParseException {
+    public void testAddSecteurActivite()throws ParseException {
         List<SecteurActivite> stocks = secteurActiviteService.retrieveAllSecteurActivite();
         int expected=stocks.size();
-        SecteurActivite sa = new SecteurActivite(2L,"3b","Bois");
+        SecteurActivite sa = new SecteurActivite("3b","Bois");
         SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
 
         assertEquals(expected+1, secteurActiviteService.retrieveAllSecteurActivite().size());
@@ -48,9 +47,9 @@ public class SecteurActiviteServiceImplTest {
     }
 
     @Test
-    public void testAddStockOptimized() {
+    public void testAddSecteurActiviteOptimized() {
 
-        SecteurActivite sa = new SecteurActivite(3L,"1a","carton");
+        SecteurActivite sa = new SecteurActivite("1a","carton");
         SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
         assertNotNull(savedSecteurActivite.getIdSecteurActivite());
         assertNotNull(savedSecteurActivite.getCodeSecteurActivite());
@@ -59,9 +58,10 @@ public class SecteurActiviteServiceImplTest {
     }
 
     @Test
-    public void testDeleteStock() {
-        SecteurActivite sa = new SecteurActivite(4L,"1b","Electronique");
+    public void testDeleteSecteurActivite() {
+        SecteurActivite sa = new SecteurActivite("1b","Electronique");
         SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
+        //secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
         secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
         assertNull(secteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite()));
     }
