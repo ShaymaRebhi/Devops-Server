@@ -47,6 +47,16 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
+	public Produit(Date dateCreation, Date dateDerniereModification) {
+		super();
+		this.dateCreation = dateCreation;
+		this.dateDerniereModification = dateDerniereModification;
+	}
+	public Produit(String libelleProduit, float prix) {
+		super();
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+	}
 	
 
 
