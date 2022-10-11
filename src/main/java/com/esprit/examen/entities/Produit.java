@@ -52,6 +52,11 @@ public class Produit implements Serializable {
 		this.dateCreation = dateCreation;
 		this.dateDerniereModification = dateDerniereModification;
 	}
+	public Produit(String libelleProduit, float prix) {
+		super();
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+	}
 	
 
 
