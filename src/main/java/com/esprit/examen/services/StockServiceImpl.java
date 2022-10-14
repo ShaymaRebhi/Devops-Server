@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
@@ -82,5 +83,11 @@ public class StockServiceImpl implements IStockService {
 		log.info(finalMessage);
 		return finalMessage;
 	}
-
+	@Scheduled(cron = "* * 22 * * *")
+	public String retreiveStockStatus() {
+		stockRepository.retrieveStatusStock().forEach(stock -> {
+			log.warn("stock "+stock.getLibelleStock() +"est epuisé");
+		});
+		return "";
+	}
 }
