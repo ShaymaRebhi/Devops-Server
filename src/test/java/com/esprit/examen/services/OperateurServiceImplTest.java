@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 
 @SpringBootTest
-public class OperateurServiceImplTest {
+class OperateurServiceImplTest {
 	
 	@Autowired
 	private OperateurServiceImpl operateurServiceImlp;
@@ -22,7 +22,7 @@ public class OperateurServiceImplTest {
 	
 	
 	@Test
-	public void TestAddOperateur(){
+	void TestAddOperateur(){
 		
 		try {
             Operateur operateur =new Operateur();
@@ -41,7 +41,7 @@ public class OperateurServiceImplTest {
 	}
 	
 	@Test
-	public void TestUpdateOperateur(){
+	void TestUpdateOperateur(){
 		
 		try {
             
@@ -59,7 +59,7 @@ public class OperateurServiceImplTest {
 	}
 	
 	@Test
-	public void TestRetrieveAllOperateur(){
+	void TestRetrieveAllOperateur(){
 		
 		try {
 			operateurServiceImlp.retrieveAllOperateurs();
@@ -74,7 +74,7 @@ public class OperateurServiceImplTest {
 	}
 
 	@Test
-	public void TestDeleteOperateur(){
+	void TestDeleteOperateur(){
 		
 		try {
 			operateurServiceImlp.deleteOperateur((long) 1);
@@ -89,7 +89,7 @@ public class OperateurServiceImplTest {
 	}
 
 	@Test
-	public void TestGetOperateur(){
+	void TestGetOperateur(){
 		
 		try {
 			Operateur operateur = operateurServiceImlp.retrieveOperateur((long) 1);
