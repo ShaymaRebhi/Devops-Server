@@ -2,13 +2,9 @@
 pipeline {
 	
     environment { 
-3
         registry = "sofiene1998/tpachat_image" 
-4
         registryCredential = 'dockerHub' 
-5
         dockerImage = '' 
-6
     }
 	agent any 
 	stages{
