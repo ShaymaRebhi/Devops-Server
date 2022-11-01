@@ -1,5 +1,15 @@
 
 pipeline {
+	
+    environment { 
+3
+        registry = "sofiene1998/tpachat_image" 
+4
+        registryCredential = 'dockerHub' 
+5
+        dockerImage = '' 
+6
+    }
 	agent any 
 	stages{
 		stage('Checkout Git'){
@@ -26,6 +36,25 @@ pipeline {
             steps{
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }			
+        } 
+
+        stage('Building Docker Image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
         }
+	
+        stage('Push Docker Image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        }
+		
 	}
 }
