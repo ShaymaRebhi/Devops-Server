@@ -1,12 +1,12 @@
 
 pipeline {
-	
+    
+    agent any 
     environment { 
         registry = "sofiene1998/tpachat_image" 
         registryCredential = 'dockerHub' 
         dockerImage = '' 
     }
-	agent any 
 	stages{
 		stage('Checkout Git'){
             steps{
@@ -24,7 +24,7 @@ pipeline {
 		
 		stage('MVN COMPILE'){
             steps{
-                sh 'mvn compile'
+                sh 'mvn -DskipTests=true  package'
             }	
     	}
 			
