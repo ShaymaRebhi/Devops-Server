@@ -30,7 +30,7 @@ public class DetailFactureImplTest {
 
         DetailFacture detailfacture = detailfactureService.retrieveDetailFactureById(2l);
         log.info(" Detail facture" + detailfacture);
-        System.out.print("facture "+detailfacture);
+      //  System.out.print("facture "+detailfacture);
 
 
 
