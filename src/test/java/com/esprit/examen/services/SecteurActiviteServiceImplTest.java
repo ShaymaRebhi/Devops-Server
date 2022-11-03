@@ -29,6 +29,8 @@ public class SecteurActiviteServiceImplTest {
         List<SecteurActivite> secteurActivites = secteurActiviteService.retrieveAllSecteurActivite();
         int expected = secteurActivites.size();
         SecteurActivite sa = new SecteurActivite("3a","Papier");
+        SecteurActivite secteur = secteurActiviteService.addSecteurActivite(sa);
+        assertEquals(expected+1, secteurActiviteService.retrieveAllSecteurActivite().size());
         SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
         secteurActiviteService.deleteSecteurActivite(secteurActivite.getIdSecteurActivite());
 
@@ -61,7 +63,6 @@ public class SecteurActiviteServiceImplTest {
     public void testDeleteSecteurActivite() {
         SecteurActivite sa = new SecteurActivite("1b","Electronique");
         SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
-        //secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
         secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
         assertNull(secteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite()));
     }
