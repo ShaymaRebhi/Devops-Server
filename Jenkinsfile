@@ -33,6 +33,12 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }			
         } 
+		
+		stage('MVN DEPLOY NEXUS'){
+            steps{
+                sh 'mvn deploy -Dmaven.test.skip=true'
+            }			
+        } 
 
         stage('Building Docker Image') { 
             steps { 
