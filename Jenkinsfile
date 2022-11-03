@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout GIT ') {
             steps {
                 echo 'Pulliing ...';
-                git branch: 'ons', url: 'https://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@github.com/ShaymaRebhi/tpAchatProject-Server.git'            }
+                git branch: 'ons', url: 'https://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@github.com/ShaymaRebhi/tpAchatProject-Server.git'            }
 
         }
 	    
