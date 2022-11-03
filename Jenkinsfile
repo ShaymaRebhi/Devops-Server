@@ -28,3 +28,4 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
+}
