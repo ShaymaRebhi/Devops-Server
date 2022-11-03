@@ -29,23 +29,27 @@ public class CategorieProduitServiceImplTest {
     public void testRetrieveAllProduit() throws ParseException {
 
         List<CategorieProduit> categorieProduit = categorieProduitService.retrieveAllCategorieProduits();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date11 = dateFormat.parse("30/09/2000");
-        Date date12 = dateFormat.parse("30/09/2010");
+
         String c = "123";
         String L = "delice";
-
-        CategorieProduit sa = new CategorieProduit(c, L);
+        String c1 = "fd1g3f1g";
+        String L1 = "Lenovo";
+        CategorieProduit sa = new CategorieProduit();
+        sa.setCodeCategorie(c);
+        sa.setLibelleCategorie(L);
         CategorieProduit savedProduit = categorieProduitService.addCategorieProduit(sa);
         System.out.print("Categorie Produit " + sa);
-        CategorieProduit sa2 = new CategorieProduit("125665", "kgkfglkg");
+        CategorieProduit sa2 = new CategorieProduit();
+        sa2.setCodeCategorie(c1);
+        sa2.setLibelleCategorie(L1);
         CategorieProduit savedProduit2 = categorieProduitService.addCategorieProduit(sa2);
         assertNotNull(sa.getIdCategorieProduit());
 
         categorieProduitService.retrieveCategorieProduit(sa.getIdCategorieProduit());
 
         List<CategorieProduit> CategorieProduits = categorieProduitService.retrieveAllCategorieProduits();
-        System.out.print("Categorie Produit " + CategorieProduits);
+
+        l.info("Categorie Produit " + CategorieProduits);
         l.info(sa2);
     }
     @Test
@@ -53,27 +57,29 @@ public class CategorieProduitServiceImplTest {
 
         List<CategorieProduit> CategorieProduits = categorieProduitService.retrieveAllCategorieProduits();
         int expected = CategorieProduits.size();
-        Long idFour=(long) 2;
-        //assertEquals(expected + 1, categorieProduitService.retrieveAllCategorieProduits().size());
-        System.out.print("size "+CategorieProduits.size());
-        l.info(" count" + CategorieProduits.size());
-        categorieProduitService.deleteCategorieProduit(1L);
-        System.out.print("size2 "+categorieProduitService.retrieveAllCategorieProduits().size());
+        Long idFour=(long) 3;
+        assertEquals(expected + 1, categorieProduitService.retrieveAllCategorieProduits().size());
 
+        l.info(" count" + CategorieProduits.size());
+        categorieProduitService.deleteCategorieProduit(3L);
+
+        l.info("size2 "+categorieProduitService.retrieveAllCategorieProduits().size());
     }
 
 
     @Test
     public void testAddCategorieProduit() throws ParseException{
         List<CategorieProduit> CategorieProduits = categorieProduitService.retrieveAllCategorieProduits();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-        CategorieProduit p = new CategorieProduit("date1", "date2");
+        String c = "122ff456f";
+        String L = "Samsung";
+        CategorieProduit p = new CategorieProduit();
+        p.setCodeCategorie(c);
+        p.setLibelleCategorie(L);
         System.out.print("produit \n "+p);
         CategorieProduit savedProduit= categorieProduitService.addCategorieProduit(p);
 
         System.out.print("size1 "+CategorieProduits.size());
-        categorieProduitService.deleteCategorieProduit(savedProduit.getIdCategorieProduit());
+
         List<CategorieProduit> CategorieProduits1 = categorieProduitService.retrieveAllCategorieProduits();
         System.out.print("size2 "+CategorieProduits1.size());
     }
