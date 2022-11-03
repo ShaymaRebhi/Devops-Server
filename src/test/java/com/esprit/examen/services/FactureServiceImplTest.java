@@ -46,7 +46,7 @@ public class FactureServiceImplTest {
         f.setDateCreationFacture(date1);
         f.setDateDerniereModificationFacture(date2);
         Facture facture = factureService.addFacture(f);
-        System.out.print("facture "+facture);
+
         assertNotNull(facture.getIdFacture());
 
 
@@ -97,28 +97,20 @@ Facture f= new Facture();
 
     }
 
-/*
     @Test
-    public void testAddFactureOptimized() throws ParseException {
-        //	List<Stock> stocks = stockService.retrieveAllStocks();
-        //	int expected=stocks.size();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = dateFormat.parse("30/09/2000");
-        Date date2 = dateFormat.parse("25/10/2000");
-
-        Facture f = new Facture();
-        Facture savedFacture= factureService.addFacture(f);
-        assertNotNull(savedFacture.getIdFacture());
-    }
- */
-/*
-    @Test
-    public void testDeleteFacture() {
+    public void testCancelFacture() throws ParseException  {
         Facture sa = new Facture();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date1 = dateFormat.parse("30/09/2020");
+        Date date2 = dateFormat.parse("05/12/2022");
+        sa.setDateCreationFacture(date1);
+        sa.setDateDerniereModificationFacture(date2);
+        sa.setArchivee(true);
+        sa.setMontantFacture(1.5f);
         Facture savedfacture= factureService.addFacture(sa);
         factureService.cancelFacture(savedfacture.getIdFacture());
-        assertNull(factureService.retrieveFacture(savedfacture.getIdFacture()));
+        assertNotNull(sa.getIdFacture());
     }
-*/
+
 
 }
