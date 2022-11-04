@@ -21,6 +21,12 @@ pipeline {
                 sh 'mvn compile'
             }	
     	}
+		 stage('Lancer les tests unitaires'){
+            steps{
+            echo 'Tests unitaires'
+            sh "cd Spring && mvn test"
+            }
+        }
 			
 		stage('MVN SONARQUBE'){
             steps{
