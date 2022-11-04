@@ -24,7 +24,7 @@ pipeline {
 		 stage('Lancer les tests unitaires'){
             steps{
             echo 'Tests unitaires'
-            sh "cd Spring && mvn test"
+            sh "mvn test"
             }
         }
 			
