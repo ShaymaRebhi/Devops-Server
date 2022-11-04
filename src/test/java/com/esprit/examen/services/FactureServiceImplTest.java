@@ -86,7 +86,7 @@ public class FactureServiceImplTest {
     @Test
     public void testgetFacturesByFournisseur() throws ParseException {
 
-Facture f= new Facture();
+        Facture f= new Facture();
         List<Facture> factures =  factureService.getFacturesByFournisseur(1l);
         log.info(" count" + factures.size());
 
@@ -94,7 +94,7 @@ Facture f= new Facture();
             log.info(" facture : " + facture.getMontantFacture()+ " et le fournisseur est  "+facture.getFournisseur().getIdFournisseur());
 
         }
-
+        assertNotNull(f.getIdFacture());
     }
 
     @Test

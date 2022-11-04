@@ -1,8 +1,6 @@
 package com.esprit.examen.services;
 
 import com.esprit.examen.entities.DetailFacture;
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import com.esprit.examen.repositories.FactureRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +23,10 @@ public class DetailFactureImpl  implements  IDetailFactureService{
 
     @Override
     public List<DetailFacture> retrieveAllDetailFactures() {
-        List<DetailFacture> detailfactures = (List<DetailFacture>) detailFactureRepo.findAll();
+        List<DetailFacture> detailfactures =  detailFactureRepo.findAll();
         for (DetailFacture detailfacture : detailfactures) {
             log.info(" detail facture : " + detailfactures);
+            log.info(" detail facture : " + detailfacture);
         }
         return detailfactures;
     }
@@ -39,7 +38,7 @@ public class DetailFactureImpl  implements  IDetailFactureService{
         df.setProduit(this.psi.produitRepository.getById(idProduit));
         df.setPrixTotalDetail(this.psi.produitRepository.getById(idProduit).getPrix()*qte);
         df.setMontantRemise((this.psi.produitRepository.getById(idProduit).getPrix()*qte/100));
-         df.setFacture(this.fR.findById(idFacture).get());
+         df.setFacture(this.fR.findById(idFacture).orElse(null));
         df.setQteCommandee(qte);
         return this.detailFactureRepo.save(df);
     }
