@@ -21,7 +21,11 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	@Override
 	public CategorieProduit addCategorieProduit(CategorieProduit cp) {
-		categorieProduitRepository.save(cp);
+		CategorieProduit c= new CategorieProduit();
+		c.setCodeCategorie(cp.getCodeCategorie());
+		c.setLibelleCategorie(cp.getLibelleCategorie());
+
+		categorieProduitRepository.save(c);
 		return cp;
 	}
 
@@ -33,6 +37,7 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	@Override
 	public CategorieProduit updateCategorieProduit(CategorieProduit cp) {
+
 		categorieProduitRepository.save(cp);
 		return cp;
 	}

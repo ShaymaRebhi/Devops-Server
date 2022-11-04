@@ -1,5 +1,6 @@
 package com.esprit.examen.services;
 
+import java.util.Date;
 import java.util.List;
 import com.esprit.examen.entities.Produit;
 
@@ -16,5 +17,6 @@ public interface IProduitService {
 	Produit retrieveProduit(Long id);
 
 	void assignProduitToStock(Long idProduit, Long idStock);
+
 
 }
