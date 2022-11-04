@@ -27,10 +27,17 @@ pipeline {
             }			
         }
 		
-		stage('Lancer les tests unitaires'){
+		stage('JUNIT/MOCKITO'){
             steps{
             echo 'Tests unitaires'
             sh "mvn test"
+            }
+        }
+		 stage('NEXUS')
+        {
+            steps{
+                echo "nexus"
+                 sh ' vn clean deploy -DskipTests'
             }
         }
 			
