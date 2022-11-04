@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -23,26 +24,20 @@ import static org.junit.Assert.*;
 public class FactureServiceImplTest {
     @Autowired
     IFactureService factureService;
-/*
+
     @Test
 
     public void testAddFacture() throws ParseException {
-        //	List<Stock> stocks = stockService.retrieveAllStocks();
-        //	int expected=stocks.size();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date1 = dateFormat.parse("30/09/2000");
         Date date2 = dateFormat.parse("25/10/2000");
 
         Facture f = new Facture(1f,2f,date1,date2,false);
         Facture savedFacture= factureService.addFacture(f);
-
-        //	assertEquals(expected+1, stockService.retrieveAllStocks().size());
         assertNotNull(savedFacture.getIdFacture());
-        //	stockService.deleteStock(savedStock.getIdStock());
-
     }
-*/
-    @Test
+
+   @Test
     public void testAddFacture1() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date1 = dateFormat.parse("30/09/2000");
@@ -52,7 +47,7 @@ public class FactureServiceImplTest {
         f.setDateCreationFacture(date1);
         f.setDateDerniereModificationFacture(date2);
         Facture facture = factureService.addFacture(f);
-        System.out.print("facture "+facture);
+
         assertNotNull(facture.getIdFacture());
 
 
@@ -61,11 +56,21 @@ public class FactureServiceImplTest {
 
     @Test
     public void testRetrieveAllFactures() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateNaissance = dateFormat.parse("30/09/2000");
         List<Facture> factures = factureService.retrieveAllFactures();
 
-        System.out.print("facture "+factures);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date1 = dateFormat.parse("30/09/2000");
+        Date date2 = dateFormat.parse("25/10/2000");
+        int expected = factures.size();
+        Facture f = new Facture();
+        f.setDateCreationFacture(date1);
+        f.setDateDerniereModificationFacture(date2);
+        f.setArchivee(true);
+        f.setMontantFacture(1.5f);
+        Facture savedFacture= factureService.addFacture(f);
+
+        assertEquals(expected + 1, factureService.retrieveAllFactures().size());
 
 
     }
@@ -74,7 +79,7 @@ public class FactureServiceImplTest {
 
         Facture facture = factureService.retrieveFacture(1l);
 
-        System.out.print("facture "+facture);
+        assertNotNull(facture.getIdFacture());
 
 
     }
@@ -82,54 +87,30 @@ public class FactureServiceImplTest {
     @Test
     public void testgetFacturesByFournisseur() throws ParseException {
 
-Facture f= new Facture();
-        List<Facture> factures =  factureService.getFacturesByFournisseur(1l);
+        Set<Facture> factures =  factureService.getFacturesByFournisseur(2l);
         log.info(" count" + factures.size());
 
-      //  System.out.print("facture "+factures);
         for (Facture facture : factures) {
             log.info(" facture : " + facture.getMontantFacture()+ " et le fournisseur est  "+facture.getFournisseur().getIdFournisseur());
 
+            assertNotNull(facture.getIdFacture());
         }
-
     }
 
-/*
     @Test
-    public void testAddFactureOptimized() throws ParseException {
-        //	List<Stock> stocks = stockService.retrieveAllStocks();
-        //	int expected=stocks.size();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = dateFormat.parse("30/09/2000");
-        Date date2 = dateFormat.parse("25/10/2000");
-
-        Facture f = new Facture();
-        Facture savedFacture= factureService.addFacture(f);
-        assertNotNull(savedFacture.getIdFacture());
-
-
-
-    }
-
-
-    @Test
-    public void testRetrieveAllFactures() throws ParseException {
-
-        List<Facture> factures = factureService.retrieveAllFactures();
-        int expected = factures.size();
-        Facture sa = new Facture(2f,3.2f);
-        Facture f1 = factureService.addFacture(sa);
-
-    }
-
-
-    @Test
-    public void testDeleteFacture() {
+    public void testCancelFacture() throws ParseException  {
         Facture sa = new Facture();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date1 = dateFormat.parse("30/09/2020");
+        Date date2 = dateFormat.parse("05/12/2022");
+        sa.setDateCreationFacture(date1);
+        sa.setDateDerniereModificationFacture(date2);
+        sa.setArchivee(true);
+        sa.setMontantFacture(1.5f);
         Facture savedfacture= factureService.addFacture(sa);
-        // factureService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-        //assertNull(secteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite()));
+        factureService.cancelFacture(savedfacture.getIdFacture());
+        assertNotNull(sa.getIdFacture());
     }
 
- */
+
 }

@@ -32,4 +32,11 @@ public class DetailFacture implements Serializable {
 	@JsonIgnore
 	Facture facture;
 
+	public DetailFacture(Long idDetailFacture, Integer qteCommandee, float prixTotalDetail, Integer pourcentageRemise, float montantRemise) {
+		this.idDetailFacture = idDetailFacture;
+		this.qteCommandee = qteCommandee;
+		this.prixTotalDetail = prixTotalDetail;
+		this.pourcentageRemise = pourcentageRemise;
+		this.montantRemise = montantRemise;
+	}
 }

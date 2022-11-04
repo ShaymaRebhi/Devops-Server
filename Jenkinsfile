@@ -1,17 +1,11 @@
 
 pipeline {
-    
-    agent any 
-    environment { 
-        registry = "sofiene1998/tpachat_image" 
-        registryCredential = 'dockerHub' 
-        dockerImage = '' 
-    }
+	agent any 
 	stages{
 		stage('Checkout Git'){
             steps{
                 echo 'Pulling...';
-                git branch: 'sofiene',
+                git branch: 'main',
                 url :'https://github.com/ShaymaRebhi/tpAchatProject-Server.git';
             }			
         }
@@ -24,39 +18,20 @@ pipeline {
 		
 		stage('MVN COMPILE'){
             steps{
-                sh 'mvn -DskipTests=true  package'
+                sh 'mvn compile'
             }	
     	}
+		 stage('Lancer les tests unitaires'){
+            steps{
+            echo 'Tests unitaires'
+            sh "mvn test"
+            }
+        }
 			
 		stage('MVN SONARQUBE'){
             steps{
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }			
-        } 
-		
-		stage('MVN DEPLOY NEXUS'){
-            steps{
-                sh 'mvn deploy -Dmaven.test.skip=true'
-            }			
-        } 
-
-        stage('Building Docker Image') { 
-            steps { 
-                script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                }
-            } 
         }
-	
-        stage('Push Docker Image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                    }
-                } 
-            }
-        }
-		
 	}
 }
