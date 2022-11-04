@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -86,15 +87,14 @@ public class FactureServiceImplTest {
     @Test
     public void testgetFacturesByFournisseur() throws ParseException {
 
-        Facture f= new Facture();
-        List<Facture> factures =  factureService.getFacturesByFournisseur(1l);
+        Set<Facture> factures =  factureService.getFacturesByFournisseur(2l);
         log.info(" count" + factures.size());
 
         for (Facture facture : factures) {
             log.info(" facture : " + facture.getMontantFacture()+ " et le fournisseur est  "+facture.getFournisseur().getIdFournisseur());
 
+            assertNotNull(facture.getIdFacture());
         }
-        assertNotNull(f.getIdFacture());
     }
 
     @Test
