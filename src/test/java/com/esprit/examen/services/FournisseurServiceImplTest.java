@@ -86,19 +86,17 @@ public class FournisseurServiceImplTest {
 
 	}
 
-	@Test
-	public void TestAssignSecteurToFournisseur()
-	{
-		
-		SecteurActivite sa= new SecteurActivite();
-		sa.setCodeSecteurActivite("testgtest");
-		sa.setLibelleSecteurActivite("testlibelle");
-		
-		Fournisseur f= new Fournisseur();
-		f.setCode("njejnjnef");
-		f.setLibelle("AAAA");
-		f.setCategorieFournisseur(CategorieFournisseur.CONVENTIONNE);
-        FournisseurService.addFournisseur(f);
-	}
+	/*
+	 * @Test public void TestAssignSecteurToFournisseur() {
+	 * 
+	 * SecteurActivite sa= new SecteurActivite();
+	 * sa.setCodeSecteurActivite("testgtest");
+	 * sa.setLibelleSecteurActivite("testlibelle");
+	 * 
+	 * Fournisseur f= new Fournisseur(); f.setCode("njejnjnef");
+	 * f.setLibelle("AAAA");
+	 * f.setCategorieFournisseur(CategorieFournisseur.CONVENTIONNE);
+	 * FournisseurService.addFournisseur(f); }
+	 */
 	
 }
