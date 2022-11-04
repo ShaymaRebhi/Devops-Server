@@ -21,17 +21,19 @@ pipeline {
                 sh 'mvn compile'
             }	
     	}
-		 stage('Lancer les tests unitaires'){
+			stage('MVN SONARQUBE'){
+            steps{
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+            }			
+        }
+		
+		stage('Lancer les tests unitaires'){
             steps{
             echo 'Tests unitaires'
             sh "mvn test"
             }
         }
 			
-		stage('MVN SONARQUBE'){
-            steps{
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-            }			
-        }
+	
 	}
 }
