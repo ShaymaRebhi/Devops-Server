@@ -6,7 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.Operateur;
 
+import static org.junit.Assert.*;
+
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +34,12 @@ class OperateurServiceImplTest {
             operateur.setPrenom("Sofiene");
             operateurServiceImlp.addOperateur(operateur);
             LOGGER.info("Operateur added : " + operateur.getNom());
+            assertNotNull(operateur.getIdOperateur());
 
         }catch (Exception e){
 
 
-            System.out.println(e.getMessage());
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
@@ -44,16 +48,22 @@ class OperateurServiceImplTest {
 	void TestUpdateOperateur(){
 		
 		try {
-            
-            Operateur operateur = operateurServiceImlp.retrieveOperateur((long) 1);
+            Operateur operateur =new Operateur();
             operateur.setNom("Mokaddem");
-            operateurServiceImlp.updateOperateur(operateur);
-            LOGGER.info("Operaeur updated : " + operateur.getNom());
+            operateur.setPassword("123456");
+            operateur.setPrenom("Sofiene");
+            operateurServiceImlp.addOperateur(operateur);
+            Operateur operateurUpdate = operateurServiceImlp.retrieveOperateur(operateur.getIdOperateur());
+            operateurUpdate.setNom("TEST");
+            operateurServiceImlp.updateOperateur(operateurUpdate);
+            LOGGER.info("Operaeur updated : " + operateurUpdate.getNom());
+
+    		assertEquals("TEST",operateurUpdate.getNom());
 
         }catch (Exception e){
 
 
-            System.out.println(e.getMessage());
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
@@ -62,13 +72,21 @@ class OperateurServiceImplTest {
 	void TestRetrieveAllOperateur(){
 		
 		try {
-			operateurServiceImlp.retrieveAllOperateurs();
+			List<Operateur> operateurs =  operateurServiceImlp.retrieveAllOperateurs();
             LOGGER.info("Retrieve All Operateur work");
+            int expected = operateurs.size();
+            Operateur operateur =new Operateur();
+            operateur.setNom("Mokaddem");
+            operateur.setPassword("123456");
+            operateur.setPrenom("Sofiene");
+            operateurServiceImlp.addOperateur(operateur);
+
+            assertEquals(expected+1, operateurServiceImlp.retrieveAllOperateurs().size());
 
         }catch (Exception e){
 
 
-            System.out.println(e.getMessage());
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
@@ -77,31 +95,23 @@ class OperateurServiceImplTest {
 	void TestDeleteOperateur(){
 		
 		try {
-			operateurServiceImlp.deleteOperateur((long) 1);
+            Operateur operateur =new Operateur();
+            operateur.setNom("Mokaddem");
+            operateur.setPassword("123456");
+            operateur.setPrenom("Sofiene");
+            operateurServiceImlp.addOperateur(operateur);
+			operateurServiceImlp.deleteOperateur(operateur.getIdOperateur());
             LOGGER.info("Operaeur deleted");
+            assertNull(operateurServiceImlp.retrieveOperateur(operateur.getIdOperateur()));
 
         }catch (Exception e){
 
 
-            System.out.println(e.getMessage());
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
 
-	@Test
-	void TestGetOperateur(){
-		
-		try {
-			Operateur operateur = operateurServiceImlp.retrieveOperateur((long) 1);
-            LOGGER.info("Operaeur : " + operateur.getNom());
-
-        }catch (Exception e){
-
-
-            System.out.println(e.getMessage());
-        }
-		
-	}
 
 }
 	
