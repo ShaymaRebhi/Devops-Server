@@ -38,13 +38,14 @@ public class ProduitServiceImplTest {
 		Produit savedProduit = produitService.addProduit(sa);
 
 		l.info("Produit " + sa);
-		assertNotNull(sa.getIdProduit());
 
 		produitService.retrieveProduit(sa.getIdProduit());
 
 		List<Produit> Produits = produitService.retrieveAllProduits();
-		System.out.print("Produit " + Produits);
+
 		l.info("Produit " + Produits);
+		assertNotNull(sa.getIdProduit());
+
 	}
 	@Test
 	public void testDeleteProduit() throws ParseException {

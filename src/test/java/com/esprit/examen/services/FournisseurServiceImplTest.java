@@ -81,8 +81,8 @@ public class FournisseurServiceImplTest {
 		Fournisseur fr= FournisseurService.retrieveFournisseur(f.getIdFournisseur());
 		fr.setCategorieFournisseur(CategorieFournisseur.ORDINAIRE);
 		FournisseurService.updateFournisseur(fr);
-		assertEquals(fr.getCategorieFournisseur(),CategorieFournisseur.ORDINAIRE);
-		System.out.println("test update =>" + fr.getCategorieFournisseur());
+		assertEquals(CategorieFournisseur.ORDINAIRE,fr.getCategorieFournisseur());
+		log.info("test update =>" + fr.getCategorieFournisseur());
 
 	}
 
@@ -99,6 +99,8 @@ public class FournisseurServiceImplTest {
 		f.setLibelle("AAAA");
 		f.setCategorieFournisseur(CategorieFournisseur.CONVENTIONNE);
         FournisseurService.addFournisseur(f);
+		assertNotNull(f.getIdFournisseur());
+
 	}
 	
 }
