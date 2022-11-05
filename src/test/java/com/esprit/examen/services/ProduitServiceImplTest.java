@@ -9,19 +9,25 @@ import java.util.List;
 import static org.junit.Assert.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-@RunWith(SpringRunner.class)
+
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 @SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 public class ProduitServiceImplTest {
 	 @Autowired
 	    IProduitService produitService;
 	    private static final Logger l = LogManager.getLogger(ProduitServiceImpl.class);
 
 	@Test
+	@Order(1)
 	public void testRetrieveAllProduit() throws ParseException {
 
 		List<Produit> produit = produitService.retrieveAllProduits();
@@ -48,6 +54,7 @@ public class ProduitServiceImplTest {
 
 	}
 	@Test
+	@Order(2)
 	public void testDeleteProduit() throws ParseException {
 
 		List<Produit> Produits = produitService.retrieveAllProduits();
@@ -65,6 +72,7 @@ public class ProduitServiceImplTest {
 		assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
 	}
 	@Test
+	@Order(3)
 	public void testAddProduit() throws ParseException{
 		List<Produit> Produits = produitService.retrieveAllProduits();
 		Produit prod =new Produit();
@@ -84,6 +92,7 @@ public class ProduitServiceImplTest {
 
 	}
 	@Test
+	@Order(4)
 	public void TestGetProduit(){
 
 		try {
