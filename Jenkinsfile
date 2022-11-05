@@ -50,7 +50,7 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
-        
+
       stage('Testing process') {
                               steps {
                                script {
