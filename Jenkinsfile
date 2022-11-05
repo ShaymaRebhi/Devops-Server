@@ -11,26 +11,35 @@ agent any
              stage('MVN CLEAN')
                         {
                             steps{
-                            sh  'mvn clean  -DskipTests=true'
+                            sh  'mvn clean  '
                             }
                         }
                         stage('MVN COMPILE ')
                         {
                             steps{
-                            sh  'mvn compile  -DskipTests=true'
+                            sh  'mvn compile  '
                             }
                         }
                         stage('MVN PACKAGE'){
                                       steps{
-                                          sh  'mvn package  -DskipTests=true'
+                                          sh  'mvn package  '
                                       }
                                 }
+			stage("Maven Build") {
+             steps {
+                script {
+                   sh "mvn package "
+                 }
+             }
+         }
+
                                        stage('MVN Test'){
                                                           steps{
-                                                              sh  'mvn test -DskipTests=true'
+                                                              sh  'mvn test'
 
                                                     }
                                        }
+	
                                          stage('MVN SONARQUBE ')
                                                         {
                                                             steps{
@@ -52,14 +61,7 @@ agent any
 
 
 
-// 		stage("Maven Build") {
-//             steps {
-//                 script {
-//                     sh "mvn package -DskipTests=true"
-//                 }
-//             }
-//         }
-
+ 		
 		 		 stage('Docker login') {
 
                                          steps {
