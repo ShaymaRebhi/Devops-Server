@@ -22,19 +22,18 @@ agent any
                                           sh  'mvn package  -DskipTests=true'
                                       }
                                 }
-//                                        stage('MVN Test'){
-//                                                           steps{
-//                                                               sh  'mvn test '
-//
-//                                                     }
-//                                        }
-//                                          stage('MVN SONARQUBE ')
-//                                                         {
-//                                                             steps{
-//                                                             sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  -DskipTests=true'
-//                                                             }
-//                                                         }
-//                                          stage("nexus deploy"){
+                                        stage('MVN Test'){
+                                                          steps{
+                                                              sh  'mvn test '
+
+                                                   }
+                                       }
+                                        stage('MVN SONARQUBE ')                                                         {
+                                                            steps{
+                                                             sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  -DskipTests=true'
+                                                             }
+                                                         }
+                                        //  stage("nexus deploy"){
 //                                                    steps{
 //                                                      sh 'mvn  deploy  -DskipTests=true'
 //                                                                      }
