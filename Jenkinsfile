@@ -25,12 +25,12 @@ agent any
                                           sh  'mvn package  -DskipTests=true'
                                       }
                                 }
-//                                        stage('MVN Test'){
-//                                                           steps{
-//                                                               sh  'mvn test '
-//
-//                                                     }
-//                                        }
+                                        stage('MVN Test'){
+                                                           steps{
+                                                               sh  'mvn test '
+
+                                                     }
+                                        }
 //                                          stage('MVN SONARQUBE ')
 //                                                         {
 //                                                             steps{
