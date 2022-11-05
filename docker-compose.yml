@@ -12,7 +12,7 @@ services:
       - AppNet
 
   spring-boot:
-    image: oumaymafarhani/devopsprojet
+    image: farhanioumayma/devopsprojet
     container_name: spring
     ports:
       - 8089:8089
