@@ -30,7 +30,7 @@ agent any
 //                                                               sh  'mvn test '
 //
 //                                                     }
-                                       }
+//                                        }
 //                                          stage('MVN SONARQUBE ')
 //                                                         {
 //                                                             steps{
