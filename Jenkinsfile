@@ -10,10 +10,17 @@ agent any
 
                  stage('Build Maven Spring'){
                              steps{
-                                sh 'mvn -B -DskipTests clean install '
+                                sh 'mvn  clean install '
                              }
                          }
-
+      stage('Testing process') {
+                              steps {
+                               script {
+                                sh 'echo "Test is processing ...."'
+                                sh 'mvn clean test -DskipTests=true'
+                               }
+                              }
+                            }
 			    stage('Build docker image'){
                              steps{
                                  script{
@@ -51,14 +58,7 @@ agent any
                                  }  }
 
 
-      stage('Testing process') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test'
-                               }
-                              }
-                            }
+
 
 //               stage('Quality Gate Status Check'){
 //                   steps{
