@@ -27,7 +27,7 @@ agent any
                                 }
                                        stage('MVN Test'){
                                                           steps{
-                                                              sh  'mvn test'
+                                                              sh  'mvn test -DskipTests=true'
 
                                                     }
                                        }
