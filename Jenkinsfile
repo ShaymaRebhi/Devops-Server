@@ -10,17 +10,18 @@ agent any
 
                  stage('Build Maven Spring'){
                              steps{
-                                sh 'mvn  clean install '
+                                sh 'mvn -B -DskipTests clean install '
                              }
                          }
-      stage('Testing process') {
+ stage('Testing process') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test -DskipTests=true'
+                                sh 'mvn -B -DskipTests clean test '
                                }
                               }
                             }
+
 			    stage('Build docker image'){
                              steps{
                                  script{
@@ -56,7 +57,6 @@ agent any
                           steps {
                                sh 'docker-compose up -d'
                                  }  }
-
 
 
 
