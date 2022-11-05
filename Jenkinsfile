@@ -8,11 +8,11 @@ agent any
         stages{
 
 
-                 stage('Build Maven Spring'){
-                             steps{
-                                sh 'mvn -B -DskipTests clean install '
-                             }
-                         }
+//                  stage('Build Maven Spring'){
+//                              steps{
+//                                 sh 'mvn -B -DskipTests clean install '
+//                              }
+//                          }
 
 			    stage('Build docker image'){
                              steps{
@@ -48,32 +48,32 @@ agent any
                  	}
                	 }
               }*/
-		stage("Maven Build") {
-            steps {
-                script {
-                    sh "mvn package -DskipTests=true"
-                }
-            }
-        }
-
-		 		 stage('Docker login') {
-
-                                         steps {
-                                          sh 'echo "login Docker ...."'
-                   	sh 'docker login -u shaymarebhi -p lafloufet123'
-                               }  }
-		 stage('Docker push') {
-
-                 steps {
-                      sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push shaymarebhi/springprojet'
-                        }  }
-         stage('Docker compose') {
-
-                          steps {
-                               sh 'docker-compose up -d'
-                                 }  }
-
-        }
+// 		stage("Maven Build") {
+//             steps {
+//                 script {
+//                     sh "mvn package -DskipTests=true"
+//                 }
+//             }
+//         }
+//
+// 		 		 stage('Docker login') {
+//
+//                                          steps {
+//                                           sh 'echo "login Docker ...."'
+//                    	sh 'docker login -u shaymarebhi -p lafloufet123'
+//                                }  }
+// 		 stage('Docker push') {
+//
+//                  steps {
+//                       sh 'echo "Docker is pushing ...."'
+//                      	sh 'docker push shaymarebhi/springprojet'
+//                         }  }
+//          stage('Docker compose') {
+//
+//                           steps {
+//                                sh 'docker-compose up -d'
+//                                  }  }
+//
+//         }
 
       }
