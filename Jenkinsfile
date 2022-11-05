@@ -45,7 +45,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t oumaymafarhani/springprojet .'
+                                    sh 'docker build -t oumaymafarhani/springprojet1 .'
                                  }
                              }
                          }
@@ -70,7 +70,7 @@ agent any
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push oumaymafarhani/springprojet'
+                     	sh 'docker push oumaymafarhani/springprojet1'
                         }  }
          stage('Docker compose') {
 
