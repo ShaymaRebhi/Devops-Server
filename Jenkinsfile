@@ -4,10 +4,7 @@ agent any
      jdk 'JAVA_HOME'
      maven 'M2_HOME'
   }
-  	  environment {
 
-        DOCKERHUB_CREDENTIALS = credentials('DockerHubID')
-    }
 
         stages{
 
@@ -21,7 +18,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/springprojet .'
+                                    sh 'docker build -t shaymarebhi/springprojet .'
                                  }
                              }
                          }
@@ -64,13 +61,13 @@ agent any
 
                                          steps {
                                           sh 'echo "login Docker ...."'
-                   	sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                   	sh 'docker login -u shaymarebhi -p lafloufet123'
                                }  }
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/springprojet'
+                     	sh 'docker push shaymarebhi/springprojet'
                         }  }
          stage('Docker compose') {
 
