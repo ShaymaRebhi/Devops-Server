@@ -10,14 +10,14 @@ agent any
 
                  stage('Build Maven Spring'){
                              steps{
-                                sh 'mvn -B -DskipTests clean install '
+                                sh 'mvn clean install -DskipTests '
                              }
                          }
  stage('Testing process') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn -B -DskipTests test '
+                                sh 'mvn test'
                                }
                               }
                             }
