@@ -37,11 +37,11 @@ agent any
                                                             sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  -DskipTests=true'
                                                             }
                                                         }
-                                         stage("nexus deploy"){
-                                                   steps{
-                                                     sh 'mvn  deploy  -DskipTests=true'
-                                                                     }
-                                                                  }
+                                       //  stage("nexus deploy"){
+                                         //          steps{
+                                           //          sh 'mvn  deploy  -DskipTests=true'
+                                             //                        }
+                                               //                   }
 			    stage('Build docker image'){
                              steps{
                                  script{
