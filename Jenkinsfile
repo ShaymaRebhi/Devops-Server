@@ -17,7 +17,7 @@ agent any
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn -B -DskipTests clean test '
+                                sh 'mvn -B -DskipTests test '
                                }
                               }
                             }
