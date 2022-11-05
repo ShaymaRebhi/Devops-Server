@@ -42,13 +42,13 @@ agent any
 //                                                      sh 'mvn  deploy  -DskipTests=true'
 //                                                                      }
 //                                                                   }
-			    stage('Build docker image'){
-                             steps{
-                                 script{
-                                    sh 'docker build -t shaymarebhi/springprojet .'
-                                 }
-                             }
-                         }
+// 			    stage('Build docker image'){
+//                              steps{
+//                                  script{
+//                                     sh 'docker build -t shaymarebhi/springprojet .'
+//                                  }
+//                              }
+//                          }
 
 
 
@@ -59,25 +59,25 @@ agent any
 //                 }
 //             }
 //         }
-
-		 		 stage('Docker login') {
-
-                                         steps {
-                                          sh 'echo "login Docker ...."'
-                   	sh 'docker login -u shaymarebhi -p lafloufet123'
-                               }  }
-		 stage('Docker push') {
-
-                 steps {
-                      sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push shaymarebhi/springprojet'
-                        }  }
-         stage('Docker compose') {
-
-                          steps {
-                               sh 'docker-compose up -d'
-                                 }  }
-
+//
+// 		 		 stage('Docker login') {
+//
+//                                          steps {
+//                                           sh 'echo "login Docker ...."'
+//                    	sh 'docker login -u shaymarebhi -p lafloufet123'
+//                                }  }
+// 		 stage('Docker push') {
+//
+//                  steps {
+//                       sh 'echo "Docker is pushing ...."'
+//                      	sh 'docker push shaymarebhi/springprojet'
+//                         }  }
+//          stage('Docker compose') {
+// 
+//                           steps {
+//                                sh 'docker-compose up -d'
+//                                  }  }
+//
 
 
 //               stage('Quality Gate Status Check'){
