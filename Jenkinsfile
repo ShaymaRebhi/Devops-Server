@@ -22,7 +22,7 @@ agent any
                                           sh  'mvn package  -DskipTests=true'
                                       }
                                 }
-                                      stage('MVN Test'){
+    //                                  stage('MVN Test'){
  //                                                //         steps{
  //                                                             sh  'mvn test '
 //
@@ -73,7 +73,11 @@ agent any
                           steps {
                                sh 'docker-compose up -d'
                                  }  }
-
+stage('MVN Test'){
+             steps{
+                                                              sh  'mvn test '
+                                                }
+                                      }
 
 
 //               stage('Quality Gate Status Check'){
