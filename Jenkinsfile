@@ -17,7 +17,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t shaymarebhi/springprojet .'
+                                    sh 'sudo docker build -t shaymarebhi/springprojet .'
                                  }
                              }
                          }
