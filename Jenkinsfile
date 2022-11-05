@@ -8,20 +8,40 @@ agent any
         stages{
 
 
-                 stage('Build Maven Spring'){
-                             steps{
-                                sh 'mvn clean install -DskipTests '
-                             }
-                         }
- stage('Testing process') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn test'
-                               }
-                              }
+             stage('MVN CLEAN')
+                        {
+                            steps{
+                            sh  'mvn clean  -DskipTests=true'
                             }
+                        }
+                        stage('MVN COMPILE ')
+                        {
+                            steps{
+                            sh  'mvn compile  -DskipTests=true'
+                            }
+                        }
+                        stage('MVN PACKAGE'){
+                                      steps{
+                                          sh  'mvn package  -DskipTests=true'
+                                      }
+                                }
+                                       stage('MVN Test'){
+                                                          steps{
+                                                              sh  'mvn test  -DskipTests=true'
 
+                                                    }
+                                       }
+                                         stage('MVN SONARQUBE ')
+                                                        {
+                                                            steps{
+                                                            sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  -DskipTests=true'
+                                                            }
+                                                        }
+                                         stage("nexus deploy"){
+                                                   steps{
+                                                     sh 'mvn  deploy  -DskipTests=true'
+                                                                     }
+                                                                  }
 			    stage('Build docker image'){
                              steps{
                                  script{
@@ -32,13 +52,13 @@ agent any
 
 
 
-		stage("Maven Build") {
-            steps {
-                script {
-                    sh "mvn package -DskipTests=true"
-                }
-            }
-        }
+// 		stage("Maven Build") {
+//             steps {
+//                 script {
+//                     sh "mvn package -DskipTests=true"
+//                 }
+//             }
+//         }
 
 		 		 stage('Docker login') {
 
