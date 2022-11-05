@@ -45,7 +45,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t farhanioumayma/devopsprojet .'
+                                    sh 'docker build -t oumaymafarhani/devops .'
                                  }
                              }
                          }
@@ -64,13 +64,13 @@ agent any
 
                                          steps {
                                           sh 'echo "login Docker ...."'
-                   	sh 'docker login -u farhanioumayma -p 07486754Oumayma'
+                   	sh 'docker login -u oumaymafarhani -p 29416927Oumayma'
                                }  }
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push farhanioumayma/devopsprojet'
+                     	sh 'docker push oumaymafarhani/devops'
                         }  }
          stage('Docker compose') {
 
