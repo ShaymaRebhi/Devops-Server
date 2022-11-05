@@ -39,7 +39,7 @@ pipeline {
         {
             steps{
                 echo "nexus"
-                 sh ' vn clean deploy -DskipTests'
+                 sh ' mvn clean deploy -DskipTests'
             }
         }
 }
