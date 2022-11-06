@@ -14,7 +14,7 @@ agent any
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test  -Dtest="SecteurActiviteServiceImplTest,DetailFactureImplTest,CategorieProduitServiceImplTest"'
+                                sh 'mvn test'
                                }
                               }
                             }
@@ -25,7 +25,7 @@ agent any
                                                                  }
                                                                            }
 
-                      stage('Build Maven Spring'){
+                      stage('Build'){
                                                   steps{
                                                      sh 'mvn  clean install -DskipTests '
                                                   }
@@ -35,7 +35,7 @@ agent any
                                                       {
                                                           steps{
                                                               echo "nexus"
-                                                               sh ' mvn clean deploy -DskipTests'
+                                                               sh ' mvn  deploy -DskipTests'
                                                           }
                                                       }
 
@@ -47,7 +47,7 @@ agent any
                              }
                          }
 
-		stage("Maven Build") {
+		stage("PACKAGE") {
             steps {
                 script {
                     sh "mvn package -DskipTests=true"
@@ -73,21 +73,21 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
-stage("wait") {
-            steps {
-                script {
-                    sh "sleep 300"
-                }
-            }
-        }
-          stage('JUNIT') {
-                                       steps {
-                                        script {
-                                         sh 'echo "Test is processing ...."'
-                                         sh 'mvn clean test  -Dtest="StockServiceImplTest"'
-                                        }
-                                       }
-                                     }
+// stage("wait") {
+//             steps {
+//                 script {
+//                     sh "sleep 300"
+//                 }
+//             }
+//         }
+//           stage('JUNIT') {
+//                                        steps {
+//                                         script {
+//                                          sh 'echo "Test is processing ...."'
+//                                          sh 'mvn clean test  -Dtest="StockServiceImplTest"'
+//                                         }
+//                                        }
+//                                      }
 
         }
 
