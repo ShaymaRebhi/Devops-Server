@@ -1,5 +1,5 @@
 package com.esprit.examen.services;
-/*import com.esprit.examen.entities.DetailFacture;
+import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -76,4 +76,3 @@ class DetailFactureImplTest {
 
 
 }
-*/
