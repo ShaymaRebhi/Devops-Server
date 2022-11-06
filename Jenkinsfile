@@ -75,7 +75,9 @@ agent any
 
                                 stage ("wait_for_testing")
                                 {
+                                steps {
                                    sh 'sleep 300'
+                                   }
                                 }
           stage('JUNIT') {
                                        steps {
