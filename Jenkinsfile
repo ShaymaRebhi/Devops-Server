@@ -10,11 +10,11 @@ agent any
 
 
 
- stage('Testing process') {
+ stage('MOCK') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test'
+                                sh 'mvn clean test  -Dtest="SecteurActiviteServiceImplTest,DetailFactureImplTest,CategorieProduitServiceImplTest"'
                                }
                               }
                             }
@@ -72,6 +72,14 @@ agent any
                           steps {
                                sh 'docker-compose up -d'
                                  }  }
+          stage('JUNIT') {
+                                       steps {
+                                        script {
+                                         sh 'echo "Test is processing ...."'
+                                         sh 'mvn clean test  -Dtest="StockServiceImplTest"'
+                                        }
+                                       }
+                                     }
 
         }
 
