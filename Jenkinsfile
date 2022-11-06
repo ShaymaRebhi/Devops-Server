@@ -32,13 +32,13 @@ agent any
                                                   }
                                               }
 
-                                  //        stage('NEXUS')
-                                   //               {
-                                     //                 steps{
-                                     //                     echo "nexus"
-                                    //                       sh ' mvn deploy -DskipTests'
-                                    //                  }
-                                     //             }
+                                         stage('NEXUS')
+                                                 {
+                                                     steps{
+                                                         echo "nexus"
+                                                           sh ' mvn deploy -DskipTests'
+                                                     }
+                                                  }
 
 			    stage('Build docker image'){
                              steps{
