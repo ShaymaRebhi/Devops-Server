@@ -15,14 +15,6 @@ agent any
                                       }
                                     }
 
-stage('JUNIT/MOCKITO') {
-                                      steps {
-                                       script {
-                                        echo 'testing';
-                                        sh 'mvn test'
-                                       }
-                                      }
-                                    }
 
           stage('MVN SONARQUBE ') {
                                   steps{
@@ -80,5 +72,22 @@ stage('JUNIT/MOCKITO') {
                                    }
 
                 }
+
+ stage("wait") {
+             steps {                script {
+                   sh "sleep 300"
+                 }
+             }
+        }
+
+                stage('JUNIT/MOCKITO') {
+                                                      steps {
+                                                       script {
+                                                        echo 'testing';
+                                                        sh 'mvn test'
+                                                       }
+                                                      }
+                                                    }
+
 
       }
