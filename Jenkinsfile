@@ -10,7 +10,7 @@ agent any
                                       steps {
                                        script {
                                         echo 'cleaning';
-                                        sh 'mvn clean test'
+                                        sh 'mvn clean '
                                        }
                                       }
                                     }
@@ -38,7 +38,7 @@ stage('JUNIT/MOCKITO') {
           stage('NEXUS')    {
                                   steps{
                                    echo "nexus"
-                                    sh ' mvn clean deploy -DskipTests=true'
+                                    sh ' mvn  deploy -DskipTests=true'
                                      }
                                    }
 
