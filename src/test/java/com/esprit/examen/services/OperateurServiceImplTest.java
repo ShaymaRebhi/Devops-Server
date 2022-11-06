@@ -1,14 +1,10 @@
-package com.esprit.examen.services;
-
+/*package com.esprit.examen.services;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.esprit.examen.entities.Operateur;
-
 @SpringBootTest
 public class OperateurServiceImplTest {
 	
@@ -28,19 +24,17 @@ public class OperateurServiceImplTest {
             */
             //operateurServiceImlp.retrieveAllOperateurs();
             
-            Operateur operateur = operateurServiceImlp.retrieveOperateur((long) 1);
-            operateur.setNom("Tijeni");
-            operateurServiceImlp.updateOperateur(operateur);
+           // Operateur operateur = operateurServiceImlp.retrieveOperateur((long) 1);
+           // operateur.setNom("Tijeni");
+          //  operateurServiceImlp.updateOperateur(operateur);
             //operateurServiceImlp.deleteOperateur(operateur.getIdOperateur());
 
-        }catch (Exception e){
+     //   }catch (Exception e){
 
 
-            System.out.println(e.getMessage());
-        }
+        //    System.out.println(e.getMessage());
+     // }
 		
-	}
+	//}
 
-}
-	
-
+//}
