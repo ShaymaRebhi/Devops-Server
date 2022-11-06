@@ -1,55 +1,78 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
+
+
 import com.esprit.examen.entities.SecteurActivite;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.esprit.examen.repositories.SecteurActiviteRepository;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit4.SpringRunner;
-import java.text.ParseException;
+
+import java.util.ArrayList;
 import java.util.List;
-import static org.junit.Assert.*;
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+@ExtendWith(MockitoExtension.class)
 public class SecteurActiviteServiceImplTest {
-    @Autowired
-    ISecteurActiviteService secteurActiviteService;
-    private static final Logger l = LogManager.getLogger(StockServiceImpl.class);
+
+    @Mock
+    SecteurActiviteRepository secteurActiviteRepository;
+    @InjectMocks
+    SecteurActiviteServiceImpl secteurActiviteServiceImpl;
+
+
+    SecteurActivite secteurActivite = new SecteurActivite("3a","Papier");
+
     @Test
-    public void testRetrieveAllSecteurActivites() throws ParseException {
-        List<SecteurActivite> secteurActivites = secteurActiviteService.retrieveAllSecteurActivite();
-        int expected = secteurActivites.size();
-        SecteurActivite sa = new SecteurActivite("3a","Papier");
-        SecteurActivite secteur = secteurActiviteService.addSecteurActivite(sa);
-        assertEquals(expected+1, secteurActiviteService.retrieveAllSecteurActivite().size());
-        SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
-        secteurActiviteService.deleteSecteurActivite(secteurActivite.getIdSecteurActivite());
+    public void testRetrieveSecteurActivite() {
+
+        Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(secteurActivite));
+        SecteurActivite secteurActivite1 = secteurActiviteServiceImpl.retrieveSecteurActivite(2L);
+        Assertions.assertNotNull(secteurActivite1);
     }
-    @Test
-    public void testAddSecteurActivite()throws ParseException {
-        List<SecteurActivite> stocks = secteurActiviteService.retrieveAllSecteurActivite();
-        int expected=stocks.size();
-        SecteurActivite sa = new SecteurActivite("3b","Bois");
-        SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
-        assertEquals(expected+1, secteurActiviteService.retrieveAllSecteurActivite().size());
-        assertNotNull(savedSecteurActivite.getLibelleSecteurActivite());
-        secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+
+    @org.junit.jupiter.api.Test
+    @Order(0)
+    void addSecteurActivite() {
+        SecteurActivite secteurActivite = new SecteurActivite();
+        List<SecteurActivite> LSecteurActivite = new ArrayList<>();
+        for (Long i=3L;i<=10L;i++) {
+            secteurActivite.setIdSecteurActivite(i);
+            secteurActivite.setCodeSecteurActivite("3w");
+            secteurActivite.setLibelleSecteurActivite("lait");
+            SecteurActivite dd=secteurActiviteRepository.save(secteurActivite);
+            LSecteurActivite.add(dd);
+        }
+        assertEquals(8,LSecteurActivite.size());
     }
-    @Test
-    public void testAddSecteurActiviteOptimized() {
-        SecteurActivite sa = new SecteurActivite("1a","carton");
-        SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
-        assertNotNull(savedSecteurActivite.getIdSecteurActivite());
-        assertNotNull(savedSecteurActivite.getCodeSecteurActivite());
-        secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
+    @org.junit.jupiter.api.Test
+    @Order(3)
+    void deleteAll() {
+        secteurActiviteRepository.deleteAll();
+        assertEquals(0,secteurActiviteRepository.findAll().spliterator().estimateSize());
     }
-    @Test
-    public void testDeleteSecteurActivite() {
-        SecteurActivite sa = new SecteurActivite("1b","Electronique");
-        SecteurActivite savedSecteurActivite= secteurActiviteService.addSecteurActivite(sa);
-        secteurActiviteService.deleteSecteurActivite(savedSecteurActivite.getIdSecteurActivite());
-        assertNull(secteurActiviteService.retrieveSecteurActivite(savedSecteurActivite.getIdSecteurActivite()));
+    @org.junit.jupiter.api.Test
+    @Order(2)
+    void retrieveSecteurActivite() {
+        Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(secteurActivite))
+        ;
+        SecteurActivite user1 = secteurActiviteServiceImpl.retrieveSecteurActivite(2L);
+        Assertions.assertNotNull(user1);
+
+    }
+    @org.junit.jupiter.api.Test
+    @Order(4)
+    void getSecteurActivite(){
+        Iterable<SecteurActivite> LSecteurActivite = secteurActiviteRepository.findAll();
+        Assertions.assertNotNull(LSecteurActivite);
     }
 }
-*/
