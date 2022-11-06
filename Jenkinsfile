@@ -14,6 +14,16 @@ agent any
                                        }
                                       }
                                     }
+
+stage('JUNIT/MOCKITO') {
+                                      steps {
+                                       script {
+                                        echo 'testing';
+                                        sh 'mvn test'
+                                       }
+                                      }
+                                    }
+
           stage('MVN SONARQUBE ') {
                                   steps{
                                      sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
