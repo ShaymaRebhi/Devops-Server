@@ -27,7 +27,7 @@ agent any
 
                       stage('Build Maven Spring'){
                                                   steps{
-                                                     sh 'mvn  clean install '
+                                                     sh 'mvn  clean install -DskipTests '
                                                   }
                                               }
 
