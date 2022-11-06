@@ -73,10 +73,13 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
- stage("A") {
-             options {
-                 timeout(time: 300, unit: "SECONDS")
-             }
+stage("wait") {
+            steps {
+                script {
+                    sh "sleep 300"
+                }
+            }
+        }
           stage('JUNIT') {
                                        steps {
                                         script {
