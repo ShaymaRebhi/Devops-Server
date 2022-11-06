@@ -1,5 +1,5 @@
 package com.esprit.examen.services;
-
+/*
 
 import com.esprit.examen.entities.SecteurActivite;
 import org.apache.logging.log4j.LogManager;
@@ -68,3 +68,4 @@ public class SecteurActiviteServiceImplTest {
     }
 
 }
+*/
