@@ -22,12 +22,11 @@ agent any
                                           sh  'mvn package  -DskipTests=true'
                                       }
                                 }
-    //                                  stage('MVN Test'){
- //                                                //         steps{
- //                                                             sh  'mvn test '
-//
-//                                                   }
- //                                      }
+stage('MVN Test'){
+             steps{
+                                                              sh  'mvn test '
+                                                }
+                                      }
                                         stage('MVN SONARQUBE ')                                                         {
                                                             steps{
                                                              sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  -DskipTests=true'
@@ -73,11 +72,7 @@ agent any
                           steps {
                                sh 'docker-compose up -d'
                                  }  }
-stage('MVN Test'){
-             steps{
-                                                              sh  'mvn test '
-                                                }
-                                      }
+
 
 
 //               stage('Quality Gate Status Check'){
