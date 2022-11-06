@@ -31,6 +31,14 @@ agent any
                                                   }
                                               }
 
+                                              stage('NEXUS')
+                                                      {
+                                                          steps{
+                                                              echo "nexus"
+                                                               sh ' mvn clean deploy -DskipTests'
+                                                          }
+                                                      }
+
 			    stage('Build docker image'){
                              steps{
                                  script{
