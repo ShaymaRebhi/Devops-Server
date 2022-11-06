@@ -17,12 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CategorieProduitServiceImplTest {
-
-
-
     @Mock
     CategorieProduitRepository categorieRepository2;
-
     @InjectMocks
     CategorieProduitServiceImpl categorieService;
 

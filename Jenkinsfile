@@ -15,7 +15,7 @@ agent any
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test'
+                                sh 'mvn test'
                                }
                               }
                             }
@@ -32,13 +32,13 @@ agent any
                                                   }
                                               }
 
-                                              stage('NEXUS')
-                                                      {
-                                                          steps{
-                                                              echo "nexus"
-                                                               sh ' mvn clean deploy -DskipTests'
-                                                          }
-                                                      }
+                                  //        stage('NEXUS')
+                                   //               {
+                                     //                 steps{
+                                     //                     echo "nexus"
+                                    //                       sh ' mvn deploy -DskipTests'
+                                    //                  }
+                                     //             }
 
 			    stage('Build docker image'){
                              steps{
