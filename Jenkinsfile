@@ -8,11 +8,28 @@ agent any
         stages{
 
 
-                 stage('Build Maven Spring'){
-                             steps{
-                                sh 'mvn  clean install '
-                             }
-                         }
+
+
+ stage('Testing process') {
+                              steps {
+                               script {
+                                sh 'echo "Test is processing ...."'
+                                sh 'mvn clean test'
+                               }
+                              }
+                            }
+    stage('MVN SONARQUBE ')
+              {
+                                                      steps{
+                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                                                                 }
+                                                                           }
+
+                      stage('Build Maven Spring'){
+                                                  steps{
+                                                     sh 'mvn  clean install '
+                                                  }
+                                              }
 
 			    stage('Build docker image'){
                              steps{
@@ -22,22 +39,6 @@ agent any
                              }
                          }
 
-
-                stage('Testing process') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test'
-                               }
-                              }
-                            }
-
-             stage('MVN SONARQUBE ')
-                                {
-                          steps{
-                    sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
-                                     }
-                                               }
 		stage("Maven Build") {
             steps {
                 script {
