@@ -1,9 +1,7 @@
-package com.esprit.examen.services;
-
-
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
 
+import com.esprit.examen.services.SecteurActiviteServiceImpl;
 import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.Test;
