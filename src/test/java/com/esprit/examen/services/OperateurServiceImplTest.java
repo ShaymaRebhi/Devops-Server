@@ -1,117 +1,89 @@
 package com.esprit.examen.services;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.entities.Operateur;
+import com.esprit.examen.repositories.OperateurRepository;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.lang.invoke.MethodHandles;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class OperateurServiceImplTest {
 	
-	@Autowired
+    @Mock
+    OperateurRepository operateurRepository;
+	
+    @InjectMocks
 	private OperateurServiceImpl operateurServiceImlp;
 	
     final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	
 	@Test
+    @Order(0)
 	void TestAddOperateur(){
 		
-		try {
             Operateur operateur =new Operateur();
-            operateur.setNom("taboubi");
-            operateur.setPassword("123456");
-            operateur.setPrenom("Sofiene");
-            operateurServiceImlp.addOperateur(operateur);
-            LOGGER.info("Operateur added : " + operateur.getNom());
-            assertNotNull(operateur.getIdOperateur());
-
-        }catch (Exception e){
-
-
-        	LOGGER.info(e.getMessage());
-        }
-		
+            List<Operateur> operateurs = new ArrayList<>();
+            for (Long i=1L;i<=8L;i++) {
+            	operateur.setIdOperateur(i);
+	            operateur.setNom("Mokaddem");
+	            operateur.setPassword("123456");
+	            operateur.setPrenom("Sofiene");
+	            operateurServiceImlp.addOperateur(operateur);
+	            LOGGER.info("Operateur added : " + operateur.getNom());
+	            operateurs.add(operateurRepository.save(operateur));
+            }
+            assertEquals(8,operateurs.size());
 	}
 	
-	@Test
-	void TestUpdateOperateur(){
-		
-		try {
-            Operateur operateur =new Operateur();
-            operateur.setNom("Mokaddem");
-            operateur.setPassword("123456");
-            operateur.setPrenom("Sofiene");
-            operateurServiceImlp.addOperateur(operateur);
-            Operateur operateurUpdate = operateurServiceImlp.retrieveOperateur(operateur.getIdOperateur());
-            operateurUpdate.setNom("TEST");
-            operateurServiceImlp.updateOperateur(operateurUpdate);
-            LOGGER.info("Operaeur updated : " + operateurUpdate.getNom());
-
-    		assertEquals("TEST",operateurUpdate.getNom());
-
-        }catch (Exception e){
-
-
-        	LOGGER.info(e.getMessage());
-        }
-		
-	}
 	
 	@Test
+    @Order(1)
 	void TestRetrieveAllOperateur(){
 		
-		try {
-			List<Operateur> operateurs =  operateurServiceImlp.retrieveAllOperateurs();
-            LOGGER.info("Retrieve All Operateur work");
-            int expected = operateurs.size();
-            Operateur operateur =new Operateur();
-            operateur.setNom("Mokaddem");
-            operateur.setPassword("123456");
-            operateur.setPrenom("Sofiene");
-            operateurServiceImlp.addOperateur(operateur);
-
-            assertEquals(expected+1, operateurServiceImlp.retrieveAllOperateurs().size());
-
-        }catch (Exception e){
-
-
-        	LOGGER.info(e.getMessage());
-        }
+        Iterable<Operateur> operateurs = operateurRepository.findAll();
+        Assertions.assertNotNull(operateurs);
 		
+	}
+	
+	@Test
+	@Order(2)
+	void TestRetrieveOperateur() {
+		
+        Operateur operateur = operateurServiceImlp.retrieveOperateur(2L);
+        Assertions.assertNotNull(operateur);
 	}
 
 	@Test
-	void TestDeleteOperateur(){
+	@Order(3)
+	void TestDeleteAllOperateur(){
 		
-		try {
-            Operateur operateur =new Operateur();
-            operateur.setNom("Mokaddem");
-            operateur.setPassword("123456");
-            operateur.setPrenom("Sofiene");
-            operateurServiceImlp.addOperateur(operateur);
-			operateurServiceImlp.deleteOperateur(operateur.getIdOperateur());
-            LOGGER.info("Operaeur deleted");
-            assertNull(operateurServiceImlp.retrieveOperateur(operateur.getIdOperateur()));
-
-        }catch (Exception e){
-
-
-        	LOGGER.info(e.getMessage());
-        }
-		
+        operateurRepository.deleteAll();
+        assertEquals(0,operateurRepository.findAll().spliterator().estimateSize());
 	}
-
+	
 
 }
 	
