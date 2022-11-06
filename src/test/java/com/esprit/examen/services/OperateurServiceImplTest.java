@@ -8,6 +8,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +37,11 @@ class OperateurServiceImplTest {
     OperateurRepository operateurRepository;
 	
     @InjectMocks
-	private OperateurServiceImpl operateurServiceImlp;
+	OperateurServiceImpl operateurServiceImlp;
 	
     final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
+    Operateur operateur = new Operateur (0L, "Mokaddem", "Sofiene", "123456", null);
 	
 	@Test
     @Order(0)
@@ -71,8 +74,8 @@ class OperateurServiceImplTest {
 	@Test
 	@Order(2)
 	void TestRetrieveOperateur() {
-		
-        Operateur operateur = operateurServiceImlp.retrieveOperateur(2L);
+        Mockito.when(operateurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(operateur));
+        Operateur operateur = operateurServiceImlp.retrieveOperateur(1L);
         Assertions.assertNotNull(operateur);
 	}
 
