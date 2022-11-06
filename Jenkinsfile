@@ -73,7 +73,7 @@ agent any
 //                      	sh 'docker push shaymarebhi/springprojet'
 //                         }  }
 //          stage('Docker compose') {
-// 
+//
 //                           steps {
 //                                sh 'docker-compose up -d'
 //                                  }  }
