@@ -16,6 +16,7 @@ agent any
                                     }
 
 
+
           stage('MVN SONARQUBE ') {
                                   steps{
                                      sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
@@ -71,23 +72,23 @@ agent any
                                        }
                                    }
 
-                }
 
- stage("wait") {
-             steps {                script {
+stage("wait") {
+            steps {                script {
                    sh "sleep 300"
                  }
              }
         }
 
-                stage('JUNIT/MOCKITO') {
-                                                      steps {
-                                                       script {
-                                                        echo 'testing';
-                                                        sh 'mvn test'
-                                                       }
-                                                      }
-                                                    }
+                                   stage('JUNIT/MOCKITO') {
+                                                                         steps {
+                                                                          script {
+                                                                           echo 'testing';
+                                                                           sh 'mvn test'
+                                                                          }
+                                                                         }
+                                                                       }
 
+                }
 
       }
