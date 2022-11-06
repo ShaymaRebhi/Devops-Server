@@ -1,5 +1,5 @@
 package com.esprit.examen.services;
-/*import com.esprit.examen.entities.DetailFacture;
+import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,12 +9,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.annotation.Order;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DetailFactureImplTest {
 
     @Mock
@@ -76,4 +78,3 @@ class DetailFactureImplTest {
 
 
 }
-*/
