@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 import java.util.ArrayList;
 import java.util.List;
 import com.esprit.examen.entities.CategorieProduit;
@@ -75,3 +75,4 @@ import static org.junit.jupiter.api.Assertions.*;
         Assertions.assertNotNull(Lcateg);
     }
 }
+*/

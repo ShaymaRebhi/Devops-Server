@@ -31,6 +31,9 @@ public class OperateurServiceImpl implements IOperateurService {
 
 	@Override
 	public Operateur updateOperateur(Operateur o) {
+		o.setNom(o.getNom());
+		o.setPrenom(o.getPrenom());
+		o.setPassword(o.getPassword());
 		operateurRepository.save(o);
 		return o;
 	}
