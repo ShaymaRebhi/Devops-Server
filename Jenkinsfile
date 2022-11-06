@@ -1,9 +1,6 @@
 pipeline{
 agent any
-  tools {
-     jdk 'JAVA_HOME'
-     maven 'M2_HOME'
-  }
+
 
         stages{
 
@@ -42,7 +39,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t oumaymafarhani/springprojet .'
+                                    sh 'docker build -t hibaef/springprojet .'
                                  }
                              }
                          }
@@ -59,13 +56,13 @@ agent any
 
                                          steps {
                                           sh 'echo "login Docker ...."'
-                   	sh 'docker login -u oumaymafarhani -p 29416927Oumayma'
+                   	sh 'docker login -u hibaef -p 13632307Hiba'
                                }  }
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push oumaymafarhani/springprojet'
+                     	sh 'docker push hibaef/springprojet'
                         }  }
          stage('Docker compose') {
 
