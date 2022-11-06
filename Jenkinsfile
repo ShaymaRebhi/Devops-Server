@@ -1,46 +1,70 @@
+pipeline{
+agent any
+  tools {
+     jdk 'JAVA_HOME'
+     maven 'M2_HOME'
+  }
 
-pipeline {
-	agent any 
-	stages{
-		stage('Checkout Git'){
-            steps{
-                echo 'Pulling...';
-                git branch: 'main',
-                url :'https://github.com/ShaymaRebhi/tpAchatProject-Server.git';
-            }			
-        }
-		
-		stage('MVN CLEAN'){
-            steps{
-                sh 'mvn clean'
-            }			
-        }
-		
-		stage('MVN COMPILE'){
-            steps{
-                sh 'mvn compile'
-            }	
-    	}
-			stage('MVN SONARQUBE'){
-            steps{
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-            }			
-        }
-		
-		stage('JUNIT/MOCKITO'){
-            steps{
-            echo 'Tests unitaires'
-            sh "mvn test"
+        stages{
+
+
+
+
+ stage('Testing process') {
+                              steps {
+                               script {
+                                sh 'echo "Test is processing ...."'
+                                sh 'mvn clean test'
+                               }
+                              }
+                            }
+    stage('MVN SONARQUBE ')
+              {
+                                                      steps{
+                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                                                                 }
+                                                                           }
+
+                      stage('Build Maven Spring'){
+                                                  steps{
+                                                     sh 'mvn  clean install '
+                                                  }
+                                              }
+
+			    stage('Build docker image'){
+                             steps{
+                                 script{
+                                    sh 'docker build -t sofiene1998/springprojet .'
+                                 }
+                             }
+                         }
+
+		stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
             }
         }
-		 stage('NEXUS')
-        {
-            steps{
-                echo "nexus"
-                 sh ' vn clean deploy -DskipTests'
-            }
+
+		 		 stage('Docker login') {
+
+                                         steps {
+                                          sh 'echo "login Docker ...."'
+                   	sh 'docker login -u sofiene1998 -p leoncupra1'
+                               }  }
+		 stage('Docker push') {
+
+                 steps {
+                      sh 'echo "Docker is pushing ...."'
+                     	sh 'docker push sofiene1998/springprojet'
+                        }  }
+         stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                                 }  }
+
         }
-			
-	
-	}
-}
+
+      }
