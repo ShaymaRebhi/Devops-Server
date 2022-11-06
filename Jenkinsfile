@@ -10,7 +10,7 @@ agent any
                                       steps {
                                        script {
                                         echo 'cleaning';
-                                        sh 'mvn clean'
+                                        sh 'mvn clean test'
                                        }
                                       }
                                     }
