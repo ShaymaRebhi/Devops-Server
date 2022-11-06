@@ -25,13 +25,13 @@ agent any
                              //             sh  'mvn package  '
                                 //      }
                              //   }
-			stage("Maven Build") {
-             steps {
-                script {
-                   sh "mvn build "
-                 }
-             }
-         }
+			//stage("Maven Build") {
+        //     steps {
+          //      script {
+            //       sh "mvn build "
+              //   }
+             //}
+         //}
 
                                        stage('MVN Test'){
                                                           steps{
