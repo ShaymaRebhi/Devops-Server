@@ -20,11 +20,11 @@ agent any
                             sh  'mvn compile  '
                             }
                         }
-                    //    stage('MVN PACKAGE'){
-                      //                steps{
-                             //             sh  'mvn package  '
-                                //      }
-                             //   }
+                        stage('MVN PACKAGE'){
+                                     steps{
+                                         sh  'mvn package  '
+                                      }
+                                }
 			//stage("Maven Build") {
         //     steps {
           //      script {
