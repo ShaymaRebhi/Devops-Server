@@ -1,4 +1,4 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 import java.util.ArrayList;
 import java.util.List;
 import com.esprit.examen.entities.CategorieProduit;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
- class CategorieProduitServiceImplTest {
+class CategorieProduitServiceImplTest {
 
 
 
@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
     }
     @Test
     @Order(0)
-     void TestaddCategorieProduit() {
+    void TestaddCategorieProduit() {
         CategorieProduit categ = new CategorieProduit();
         List<CategorieProduit> LCategorie = new ArrayList<>();
         for (Long i=1L;i<=10L;i++) {
@@ -75,4 +75,3 @@ import static org.junit.jupiter.api.Assertions.*;
         Assertions.assertNotNull(Lcateg);
     }
 }
-*/
