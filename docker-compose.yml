@@ -21,7 +21,6 @@ services:
     networks:
       - AppNet
     restart: on-failure
-
   angular:
     image: oumaymafarhani/angularproject
     container_name: angular
@@ -31,6 +30,5 @@ services:
       - spring-boot
     networks:
       - AppNet
-
 networks:
   AppNet:
