@@ -53,6 +53,12 @@
 			<version>5.6.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -86,13 +92,7 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<name>Nexus Repository </name>
-			<url>http://172.10.0.140:8081/repository/maven-snapshots/</url>
-		</repository>
-	</distributionManagement>
+
 
 	<build>
 		<plugins>
@@ -110,5 +110,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Repository </name>
+			<url>http://172.10.0.140:8081/repository/maven-snapshots/</url>
+		</repository>
+	</distributionManagement>
 </project>
