@@ -24,15 +24,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 public class SecteurActiviteServiceImplTest {
-
     @Mock
     SecteurActiviteRepository secteurActiviteRepository;
     @InjectMocks
     SecteurActiviteServiceImpl secteurActiviteServiceImpl;
-
-
     SecteurActivite secteurActivite = new SecteurActivite("3a","Papier");
-
     @Test
     public void testRetrieveSecteurActivite() {
 
