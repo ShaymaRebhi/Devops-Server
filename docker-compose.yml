@@ -26,7 +26,7 @@ services:
     image: oumaymafarhani/angularproject
     container_name: angular
     ports:
-      - 80:80
+      - 88:88
     depends_on:
       - spring-boot
     networks:
