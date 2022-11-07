@@ -21,6 +21,15 @@ services:
     networks:
       - AppNet
     restart: on-failure
+  angular:
+    image: hibaef/angularproject
+    container_name: angular
+    ports:
+      - 80:80
+    depends_on:
+      - spring-boot
+    networks:
+      - AppNet
 
 networks:
   AppNet:
