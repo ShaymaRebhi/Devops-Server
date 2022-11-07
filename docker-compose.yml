@@ -1,23 +1,26 @@
 version: '3'
-
 services:
-  mysqldb:
-    container_name: mysqldb
-    image: mysql:8
-    restart: unless-stopped
+  database:
+    image: mysql
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpachato
     ports:
-      - "3306:3306"
-    volumes:
-      - /home/mysql/data:/var/lib/mysql
+      - 3306:3306
+    networks:
+      - AppNet
 
-  spring_app:
-    image: achatproject
-    container_name: achatproject
-    restart: on-failure
+  spring-boot:
+    image: oumaymafarhani/springprojet
+    container_name: spring
     ports:
       - 8089:8089
     depends_on:
-      - mysqldb
+      - database
+    networks:
+      - AppNet
+    restart: on-failure
 
+networks:
+  AppNet:

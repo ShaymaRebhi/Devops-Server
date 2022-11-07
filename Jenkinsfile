@@ -31,10 +31,18 @@ agent any
                                                   }
                                               }
 
+                                              stage('NEXUS')
+                                                      {
+                                                          steps{
+                                                              echo "nexus"
+                                                               sh ' mvn clean deploy -DskipTests'
+                                                          }
+                                                      }
+
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t sofiene1998/springprojet .'
+                                    sh 'docker build -t oumaymafarhani/springprojet .'
                                  }
                              }
                          }
@@ -51,13 +59,13 @@ agent any
 
                                          steps {
                                           sh 'echo "login Docker ...."'
-                   	sh 'docker login -u sofiene1998 -p leoncupra1'
+                   	sh 'docker login -u oumaymafarhani -p 29416927Oumayma'
                                }  }
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push sofiene1998/springprojet'
+                     	sh 'docker push oumaymafarhani/springprojet'
                         }  }
          stage('Docker compose') {
 
