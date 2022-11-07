@@ -78,19 +78,12 @@ stage('JUNIT/MOCKITO') {
                                   sh 'docker-compose up -d'
                                        }
                                    }
-    stages {
-        stage('Ok') {
-            steps {
-                echo "Ok"
-            }
-        }
-    }
-    post {
+
+                }
+      post {
         always {
             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
-
-                }
 
       }
