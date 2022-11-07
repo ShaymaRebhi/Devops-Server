@@ -18,13 +18,13 @@ agent any
                                }
                               }
                             }
-    stage('MVN SONARQUBE ')
+/*    stage('MVN SONARQUBE ')
               {
                                                       steps{
                                                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
                                                                  }
                                                                            }
-
+*/
                       stage('Build Maven Spring'){
                                                   steps{
                                                      sh 'mvn  clean install '
@@ -42,7 +42,7 @@ agent any
 			    stage('Build docker image'){
                              steps{
                                  script{
-                                    sh 'docker build -t oumaymafarhani/springprojet .'
+                                    sh 'docker build -t sofiene1998/springprojet .'
                                  }
                              }
                          }
@@ -59,13 +59,13 @@ agent any
 
                                          steps {
                                           sh 'echo "login Docker ...."'
-                   	sh 'docker login -u oumaymafarhani -p 29416927Oumayma'
+                   	sh 'docker login -u sofiene1998 -p leoncupra1'
                                }  }
 		 stage('Docker push') {
 
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push oumaymafarhani/springprojet'
+                     	sh 'docker push sofiene1998/springprojet'
                         }  }
          stage('Docker compose') {
 
