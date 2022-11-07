@@ -6,42 +6,42 @@ agent any
   }
 
    stages{
-         stage('Cleaning') {
+        stage('MOCK') {
                                       steps {
                                        script {
-                                        echo 'cleaning';
-                                        sh 'mvn clean '
+                                        sh 'echo "Test is processing ...."'
+                                        sh 'mvn test'
                                        }
                                       }
                                     }
+            stage('MVN SONARQUBE ')
+                      {
+                                                              steps{
+                                                        sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                                                                         }
+                                                                                   }
 
-
-
-          stage('MVN SONARQUBE ') {
-                                  steps{
-                                     sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
-                                    }
-                                   }
-
-         stage('Build Maven Spring'){
-                                  steps{
-                                     sh 'mvn  clean install '
-                                    }
-                                   }
-          stage('NEXUS')    {
-                                  steps{
-                                   echo "nexus"
-                                    sh ' mvn  deploy -DskipTests=true'
-                                     }
-                                   }
-
-          stage("Maven Build") {
-                                             steps {
-                                                 script {
-                                                  sh "mvn package -DskipTests=true"
+                              stage('Build'){
+                                                          steps{
+                                                             sh 'mvn  clean install -DskipTests '
                                                           }
-                                                     }
-                                         }
+                                                      }
+
+                                                      stage('NEXUS')
+                                                              {
+                                                                  steps{
+                                                                      echo "nexus"
+                                                                       sh ' mvn  deploy -DskipTests'
+                                                                  }
+                                                              }
+
+
+
+
+
+
+
+
 
          stage('Build docker image'){
                                      steps{
