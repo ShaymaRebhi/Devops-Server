@@ -15,35 +15,42 @@ agent any
                                       }
                                     }
 
-
-
-
-
-         stage('Build Maven Spring'){
-                                  steps{
-                                     sh 'mvn  clean install '
-                                    }
-                                   }
-          stage('NEXUS')    {
-                                  steps{
-                                   echo "nexus"
-                                    sh ' mvn  deploy -DskipTests=true'
-                                     }
-                                   }
-
-          stage("Maven Build") {
-                                             steps {
-                                                 script {
-                                                  sh "mvn package -DskipTests=true"
-                                                          }
-                                                     }
-                                         }
-
-                                          stage('MVN SONARQUBE ') {
+ stage('MVN COMPILE') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+ stage('MVN SONARQUBE ') {
                                                                            steps{
                                                                               sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
                                                                              }
                                                                             }
+
+stage('JUNIT/MOCKITO') {
+                                      steps {
+                                       script {
+                                        echo 'testing';
+                                        sh 'mvn test'
+                                       }
+                                      }
+                                    }
+
+          stage('NEXUS')    {
+                                  steps{
+                                   echo "nexus"
+                                    sh ' mvn  deploy -DskipTests'
+                                     }
+                                   }
+
+         // stage("Maven Build") {
+             //                                steps {
+                  //                               script {
+                   //                               sh "mvn package -DskipTests=true"
+                   //                                       }
+                   //                                  }
+                   //                      }
+
+
 
          stage('Build docker image'){
                                      steps{
@@ -74,14 +81,7 @@ agent any
                                        }
                                    }
 
-stage('JUNIT/MOCKITO') {
-                                      steps {
-                                       script {
-                                        echo 'testing';
-                                        sh 'mvn test'
-                                       }
-                                      }
-                                    }
+s
                 }
 
       }
