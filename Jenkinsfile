@@ -14,7 +14,7 @@ agent any
                                        }
                                       }
                                     }
-/*
+
 stage('JUNIT/MOCKITO') {
                                       steps {
                                        script {
@@ -23,13 +23,13 @@ stage('JUNIT/MOCKITO') {
                                        }
                                       }
                                     }
-
+/*
           stage('MVN SONARQUBE ') {
                                   steps{
                                      sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
                                     }
                                    }
-
+*/
          stage('Build Maven Spring'){
                                   steps{
                                      sh 'mvn  clean install '
@@ -78,7 +78,7 @@ stage('JUNIT/MOCKITO') {
                                   sh 'docker-compose up -d'
                                        }
                                    }
-*/
+
                 }
 post {
         success {
