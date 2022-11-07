@@ -15,27 +15,27 @@ agent any
                                       }
                                     }
 
- stage('MVN COMPILE') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
- stage('MVN SONARQUBE ') {
-                                                                           steps{
-                                                                              sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
-                                                                             }
-                                                                            }
+         stage('MVN COMPILE') {
+                    steps {
+                        sh 'mvn compile'
+                    }
+                }
+         stage('MVN SONARQUBE ') {
+                      steps{
+                          sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                             }
+             }
 
-stage('JUNIT/MOCKITO') {
-                                      steps {
-                                       script {
-                                        echo 'testing';
-                                        sh 'mvn test'
-                                       }
-                                      }
-                                    }
+        stage('JUNIT/MOCKITO') {
+                                              steps {
+                                               script {
+                                                echo 'testing';
+                                                sh 'mvn test'
+                                               }
+                                              }
+                                  }
 
-          stage('NEXUS')    {
+        stage('NEXUS')    {
                                   steps{
                                    echo "nexus"
                                     sh ' mvn  deploy -DskipTests'
@@ -81,7 +81,6 @@ stage('JUNIT/MOCKITO') {
                                        }
                                    }
 
-s
-                }
+             }
 
       }
