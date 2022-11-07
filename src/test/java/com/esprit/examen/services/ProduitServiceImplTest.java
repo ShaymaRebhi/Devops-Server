@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 import com.esprit.examen.entities.Produit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,7 @@ public class ProduitServiceImplTest {
 	    private static final Logger l = LogManager.getLogger(ProduitServiceImpl.class);
 	@Test
 	public void testRetrieveAllProduit() throws ParseException {
-		/*List<Produit> produit = produitService.retrieveAllProduits();
+		List<Produit> produit = produitService.retrieveAllProduits();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date11 = dateFormat.parse("30/09/2000");
 		Date date12 = dateFormat.parse("30/09/2010");
@@ -35,11 +35,11 @@ public class ProduitServiceImplTest {
 		produitService.retrieveProduit(sa.getIdProduit());
 		List<Produit> Produits = produitService.retrieveAllProduits();
 		l.info("Produit " + Produits);
-		assertNotNull(sa.getIdProduit());*/
+		assertNotNull(sa.getIdProduit());
 	}
 	@Test
 	public void testDeleteProduit() throws ParseException {
-		/*List<Produit> Produits = produitService.retrieveAllProduits();
+		List<Produit> Produits = produitService.retrieveAllProduits();
 		int expected = Produits.size();
 		Produit sa = new Produit();
 		sa.setCodeProduit("f-5156");
@@ -48,11 +48,11 @@ public class ProduitServiceImplTest {
 		l.info(" count" + Produits.size());
 		produitService.deleteProduit(savedProduit.getIdProduit());
 		l.info("size2 "+produitService.retrieveAllProduits().size());
-		assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));*/
+		assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
 	}
 	@Test
 	public void testAddProduit() throws ParseException{
-	/*	List<Produit> Produits = produitService.retrieveAllProduits();
+		List<Produit> Produits = produitService.retrieveAllProduits();
 		Produit prod =new Produit();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse("10/02/2020");
@@ -65,11 +65,11 @@ public class ProduitServiceImplTest {
 		Produit savedProduit= produitService.addProduit(prod);
 		l.info("Produit added : " + prod.getLibelleProduit());
 		l.info("size produit : : " +Produits.size());
-		assertNotNull(produitService.retrieveProduit(savedProduit.getIdProduit()));*/
+		assertNotNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
 	}
 	@Test
 	public void TestGetProduit(){
-	/*	try {
+		try {
 			Produit sa = new Produit();
 			sa.setCodeProduit("f-515546");
 			sa.setLibelleProduit("Telephone");
@@ -80,7 +80,6 @@ public class ProduitServiceImplTest {
 		}catch (Exception e){
 			l.info(e.getMessage());
 		}
-
-	 */
 	}
 }
+*/
