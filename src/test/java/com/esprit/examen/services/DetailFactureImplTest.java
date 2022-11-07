@@ -1,5 +1,5 @@
 package com.esprit.examen.services;
-/*import com.esprit.examen.entities.DetailFacture;
+import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,8 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,23 +14,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DetailFactureImplTest {
-
     @Mock
     DetailFactureRepository detailFactureRepository2;
-
     @InjectMocks
     DetailFactureImpl detailfactureService;
-
     DetailFacture d = new DetailFacture(5l,1,2.2f,1,33.2f);
-
-
     Long getId()
-    {
-        for (DetailFacture det: detailFactureRepository2.findAll()) {
+    {for (DetailFacture det: detailFactureRepository2.findAll()) {
             return det.getIdDetailFacture();
         }
-        return 0L;
-    }
+        return 0L;}
     @Test
     @Order(0)
     void addDetailFacture() {
@@ -76,4 +67,3 @@ class DetailFactureImplTest {
 
 
 }
-*/
