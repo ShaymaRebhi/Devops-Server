@@ -21,6 +21,15 @@ services:
     networks:
       - AppNet
     restart: on-failure
+  angular:
+    image: sofiene1998/angularproject
+    container_name: angular
+    ports:
+      - 88:88
+    depends_on:
+      - spring-boot
+    networks:
+      - AppNet
 
 networks:
   AppNet:
