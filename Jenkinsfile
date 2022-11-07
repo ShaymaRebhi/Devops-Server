@@ -80,10 +80,10 @@ stage('JUNIT/MOCKITO') {
                                    }
 */
                 }
-      post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
+  post {
+    success {
+      mail to: sofiene.mokaddem@esprit.tn, subject: ‘The Pipeline success :(‘
     }
+  }
 
       }
