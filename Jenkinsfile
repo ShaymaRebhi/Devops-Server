@@ -15,26 +15,9 @@ agent any
                                       }
                                     }
 
-                                     stage('Docker compose') {
-                                                                    steps {
-                                                                      sh 'docker-compose up -d'
-                                                                           }
-                                                                       }
 
-stage('JUNIT/MOCKITO') {
-                                      steps {
-                                       script {
-                                        echo 'testing';
-                                        sh 'mvn test'
-                                       }
-                                      }
-                                    }
 
-          stage('MVN SONARQUBE ') {
-                                  steps{
-                                     sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
-                                    }
-                                   }
+
 
          stage('Build Maven Spring'){
                                   steps{
@@ -55,6 +38,12 @@ stage('JUNIT/MOCKITO') {
                                                           }
                                                      }
                                          }
+
+                                          stage('MVN SONARQUBE ') {
+                                                                           steps{
+                                                                              sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                                                                             }
+                                                                            }
 
          stage('Build docker image'){
                                      steps{
@@ -85,6 +74,14 @@ stage('JUNIT/MOCKITO') {
                                        }
                                    }
 
+stage('JUNIT/MOCKITO') {
+                                      steps {
+                                       script {
+                                        echo 'testing';
+                                        sh 'mvn test'
+                                       }
+                                      }
+                                    }
                 }
 
       }
