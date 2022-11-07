@@ -15,6 +15,12 @@ agent any
                                       }
                                     }
 
+                                     stage('Docker compose') {
+                                                                    steps {
+                                                                      sh 'docker-compose up -d'
+                                                                           }
+                                                                       }
+
 stage('JUNIT/MOCKITO') {
                                       steps {
                                        script {
