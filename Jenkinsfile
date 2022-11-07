@@ -15,7 +15,11 @@ agent any
                                       }
                                     }
 
-
+stage('Docker compose') {
+                                steps {
+                                  sh 'docker-compose up -d'
+                                       }
+                                   }
        //   stage('MVN SONARQUBE ') {
             //                      steps{
                                //      sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
