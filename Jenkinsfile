@@ -69,10 +69,6 @@ agent any
                                   sh 'docker-compose up -d'
                                        }
                                    }
-
-                }
-
-
 stage('JUNIT/MOCKITO') {
                                       steps {
                                        script {
@@ -81,5 +77,9 @@ stage('JUNIT/MOCKITO') {
                                        }
                                       }
                                     }
+                }
+
+
+
 
       }
