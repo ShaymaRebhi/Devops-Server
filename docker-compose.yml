@@ -4,7 +4,6 @@ services:
     links:
       - mysqldb
     image: mysql:5.7
-    container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
