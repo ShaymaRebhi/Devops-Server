@@ -13,12 +13,13 @@ agent any
                                         sh 'mvn test'
                                        }
                                       }
+                                      post {
+                                                                                          always {
+                                                                                              junit '**/target/surefire-reports/TEST-*.xml'
+                                                                                          }
+                                                                                      }
                                     }
-                                     post {
-                                                    always {
-                                                        junit '**/target/surefire-reports/TEST-*.xml'
-                                                    }
-                                                }
+
             stage('MVN SONARQUBE ')
                       {
                                                               steps{
