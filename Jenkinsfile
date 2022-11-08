@@ -73,22 +73,25 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
-// stage("wait") {
-//             steps {
-//                 script {
-//                     sh "sleep 300"
-//                 }
-//             }
-//         }
-//           stage('JUNIT') {
-//                                        steps {
-//                                         script {
-//                                          sh 'echo "Test is processing ...."'
-//                                          sh 'mvn clean test  -Dtest="StockServiceImplTest"'
-//                                         }
-//                                        }
-//                                      }
+ stage("wait") {
+            steps {
+                 script {
+                     sh "sleep 200"
+                }
+            }
+         }
+    stage('Test') {
+              steps {
+                  sh 'mvn test'
+                  // bat '.\\mvnw test'
+              }
 
+              post {
+                  always {
+                      junit '**/target/surefire-reports/TEST-*.xml'
+                  }
+              }
+          }
         }
 
       }
