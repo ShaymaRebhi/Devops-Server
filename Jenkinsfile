@@ -10,14 +10,14 @@ agent any
 
 
 
- stage('MOCK') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn test'
-                               }
-                              }
-                            }
+//  stage('MOCK') {
+//                               steps {
+//                                script {
+//                                 sh 'echo "Test is processing ...."'
+//                                 sh 'mvn test'
+//                                }
+//                               }
+//                             }
     stage('MVN SONARQUBE ')
               {
                                                       steps{
