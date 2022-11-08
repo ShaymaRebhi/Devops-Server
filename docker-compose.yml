@@ -1,6 +1,8 @@
 version: '3'
 services:
   database:
+    links:
+      - mysqldb
     image: mysql
     container_name: mysqldb
     environment:
