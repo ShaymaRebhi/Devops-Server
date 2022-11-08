@@ -29,7 +29,7 @@ pipeline {
 	        }
 	    }
 
-	     stage('Junit/Mockito') {
+	   /*   stage('Junit/Mockito') {
                                        steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
@@ -50,7 +50,7 @@ pipeline {
             steps{
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=NOSnos1312'
             }			
-        }
+        } */
         
         stage('Build docker image'){
                                     steps{
@@ -59,5 +59,14 @@ pipeline {
                                         }
                                     }
                                 }
+
+        /* stage('Docker Image Push ') {
+                    steps {
+                    script {
+        		    sh 'docker login -u onschebbi -p NOSnos1312'
+        		    sh 'docker push onschebbi/springproject'
+        		    }
+        		    }
+        		    } */
 }
 }
