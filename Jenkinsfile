@@ -23,16 +23,16 @@ stage('JUNIT/MOCKITO') {
                                        }
                                       }
                                     }
-/*
+
           stage('MVN SONARQUBE ') {
                                   steps{
                                      sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
                                     }
                                    }
-*/
+
          stage('Build Maven Spring'){
                                   steps{
-                                     sh 'mvn  clean install '
+                                     sh 'mvn install '
                                     }
                                    }
           stage('NEXUS')    {
@@ -42,13 +42,6 @@ stage('JUNIT/MOCKITO') {
                                      }
                                    }
 
-          stage("Maven Build") {
-                                             steps {
-                                                 script {
-                                                  sh "mvn package -DskipTests=true"
-                                                          }
-                                                     }
-                                         }
 
          stage('Build docker image'){
                                      steps{
