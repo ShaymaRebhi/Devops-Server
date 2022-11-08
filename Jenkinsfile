@@ -14,6 +14,11 @@ agent any
                                        }
                                       }
                                     }
+                                     post {
+                                                    always {
+                                                        junit '**/target/surefire-reports/TEST-*.xml'
+                                                    }
+                                                }
             stage('MVN SONARQUBE ')
                       {
                                                               steps{
