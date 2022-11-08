@@ -33,7 +33,7 @@ pipeline {
                                        steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
-                                        sh 'mvn test "'
+                                        sh 'mvn test'
                                        }
                                       }
                                     }
