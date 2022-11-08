@@ -10,14 +10,14 @@ agent any
 
 
 
-//  stage('MOCK') {
-//                               steps {
-//                                script {
-//                                 sh 'echo "Test is processing ...."'
-//                                 sh 'mvn test'
-//                                }
-//                               }
-//                             }
+ stage('MOCK') {
+                              steps {
+                               script {
+                                sh 'echo "Test is processing ...."'
+                                sh 'mvn test'
+                               }
+                              }
+                            }
     stage('MVN SONARQUBE ')
               {
                                                       steps{
@@ -73,25 +73,22 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
- stage("wait") {
-            steps {
-                 script {
-                     sh "sleep 200"
-                }
-            }
-         }
-    stage('Test') {
-              steps {
-                  sh 'mvn test'
-                  // bat '.\\mvnw test'
-              }
+// stage("wait") {
+//             steps {
+//                 script {
+//                     sh "sleep 300"
+//                 }
+//             }
+//         }
+//           stage('JUNIT') {
+//                                        steps {
+//                                         script {
+//                                          sh 'echo "Test is processing ...."'
+//                                          sh 'mvn clean test  -Dtest="StockServiceImplTest"'
+//                                         }
+//                                        }
+//                                      }
 
-              post {
-                  always {
-                      junit '**/target/surefire-reports/TEST-*.xml'
-                  }
-              }
-          }
         }
 
       }
