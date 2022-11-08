@@ -11,7 +11,7 @@ services:
     ports:
       - 3306:3306
     networks:
-      - AppNet
+      - spring-mysql
 
   spring-boot:
     image: onschebbi/springproject
@@ -23,7 +23,7 @@ services:
     depends_on:
       - database
     networks:
-      - AppNet
+      - spring-mysql
     restart: on-failure
 
 networks:
