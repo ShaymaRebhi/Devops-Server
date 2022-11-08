@@ -28,7 +28,15 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
-	    
+
+	     stage('Junit/Mockito') {
+                                       steps {
+                                       script {
+                                        sh 'echo "Test is processing ...."'
+                                        sh 'mvn test'
+                                       }
+                                      }
+                                    }
 	     stage('NEXUS')
         {
             steps{
