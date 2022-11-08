@@ -3,7 +3,7 @@ services:
   database:
     links:
       - mysqldb
-    image: mysql:8
+    image: mysql:5.7
     container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
