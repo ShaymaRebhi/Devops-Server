@@ -2,7 +2,7 @@ version: '3'
 services:
   database:
     image: mysql
-    container_name: mysql
+    container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
@@ -21,14 +21,6 @@ services:
     networks:
       - AppNet
     restart: on-failure
-#  angular:
-#    image: shaymarebhi/angularproject
-#    container_name: angular
-#    ports:
-#      - 80:80
-#    depends_on:
-#      - spring-boot
-#    networks:
-#      - AppNet
+
 networks:
   AppNet:
