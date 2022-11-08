@@ -29,7 +29,7 @@ pipeline {
 	        }
 	    }
 
-	   /*   stage('Junit/Mockito') {
+	     stage('Junit/Mockito') {
                                        steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
@@ -38,7 +38,7 @@ pipeline {
                                       }
                                     }
 
-	     stage('NEXUS')
+	    /* stage('NEXUS')
         {
             steps{
                 echo "nexus"
