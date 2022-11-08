@@ -1,0 +1,34 @@
+version: '3'
+services:
+  database:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpachato
+    ports:
+      - 3306:3306
+    networks:
+      - AppNet
+
+  spring-boot:
+    image: onschebbi/springproject
+    container_name: springapp
+    ports:
+      - 8089:8089
+    depends_on:
+      - database
+    networks:
+      - AppNet
+    restart: on-failure
+#  angular:
+#    image: shaymarebhi/angularproject
+#    container_name: angular
+#    ports:
+#      - 80:80
+#    depends_on:
+#      - spring-boot
+#    networks:
+#      - AppNet
+networks:
+  AppNet:

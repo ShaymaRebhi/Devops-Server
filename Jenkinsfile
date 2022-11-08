@@ -60,13 +60,19 @@ pipeline {
                                     }
                                 }
 
-        /* stage('Docker Image Push ') {
+         stage('Docker Image Push ') {
                     steps {
                     script {
         		    sh 'docker login -u onschebbi -p NOSnos1312'
         		    sh 'docker push onschebbi/springproject'
         		    }
         		    }
-        		    } */
+        		    }
+          stage('Docker compose') {
+
+                                   steps {
+                                        sh 'docker-compose up -d'
+                                          }  }
+
 }
 }
