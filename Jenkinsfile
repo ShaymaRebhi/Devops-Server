@@ -29,24 +29,15 @@ pipeline {
 	        }
 	    }
 
-	     stage('Mockito') {
+	     stage('Junit/Mockito') {
                                        steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
-                                        sh 'mvn clean test  -Dtest="FournisseurServiceImplMock"'
+                                        sh 'mvn test "'
                                        }
                                       }
                                     }
-         stage('JUNIT') {
-                                                 steps {
-                                                  script {
-                                                   sh 'echo "Test is processing ...."'
-                                                  sh 'mvn clean test  -Dtest="FournisseurServiceImplTest"'
-                                                  }
-                                                }
-                                              }
 
-                 }
 	     stage('NEXUS')
         {
             steps{
