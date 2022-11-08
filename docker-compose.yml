@@ -3,7 +3,7 @@ services:
   database:
     links:
       - mysqldb
-    image: mysql
+    image: mysql:8
     container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -16,6 +16,8 @@ services:
   spring-boot:
     image: onschebbi/springproject
     container_name: springapp
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/tpachato?autoReconnect=true&useSSL=false
     ports:
       - 8089:8089
     depends_on:
