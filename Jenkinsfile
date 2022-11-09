@@ -77,6 +77,18 @@ agent any
                                   sh 'docker-compose up -d'
                                        }
                                    }
+                                   post {
+                                                                                   success {
+                                                                                        mail to: "shayma.rebhi@esprit.tn",
+                                                                                        subject: "Pipeline Success",
+                                                                                        body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
+                                                                                   }
+                                                       failure {
+                                                           mail to: "shayma.rebhi@esprit.tn",
+                                                            subject: "Pipeline Failure",
+                                                            body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
+                                                       }
+                                                       }
 
 
                 }
