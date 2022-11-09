@@ -31,6 +31,9 @@ services:
       - 8089:8089
     depends_on:
       - mysqldb
+    stdin_open: true
+    tty: true
 
 volumes:
   springdb:
+
