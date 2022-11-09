@@ -11,7 +11,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
     volumes:
-      - ./tpachato:/var/lib/mysql
+      - springdb:/var/lib/mysql
 
   spring_app:
     image: onschebbi/springproject
@@ -25,4 +25,4 @@ services:
       - mysqldb
 
 volumes:
-  tpachato:
+  springdb:
