@@ -75,10 +75,14 @@ stage('JUNIT/MOCKITO') {
                 }
 post {
         success {
-            echo 'Successfully!'
+         mail to: "sofiene.mokaddem@esprit.tn",
+         subject: "Pipeline Success",
+         body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
         }
         failure {
-            echo 'Failed!'
+         mail to: "sofiene.mokaddem@esprit.tn",
+         subject: "Pipeline failed",
+         body: "failed on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
         }
     }
 
