@@ -83,13 +83,13 @@ agent any
 post {
                                                 success {
                                                      mail to: "hiba.elwafi@esprit.tn",
-                                                     subject: "Pipeline backend Success",
-                                                     body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
+                                                     subject: "Pipeline Backend Success",
+                                                     body: "Welcome to DevOps project Backend : success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
                                                 }
                     failure {
                         mail to: "hiba.elwafi@esprit.tn",
                          subject: "Pipeline backend Failure",
-                         body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
+                         body: "Welcome to DevOps project Backend : Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
                     }
                     }
       }
