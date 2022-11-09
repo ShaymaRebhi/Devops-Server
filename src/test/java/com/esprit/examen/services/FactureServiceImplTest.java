@@ -1,4 +1,4 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Operateur;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class FactureServiceImplTest {
         Facture savedFacture= factureService.addFacture(f);
         assertNotNull(savedFacture.getIdFacture());
     }
-   @Test
+    @Test
     public void testAddFacture1() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date1 = dateFormat.parse("30/09/2000");
@@ -60,6 +60,7 @@ public class FactureServiceImplTest {
         Facture facture = factureService.retrieveFacture(1l);
         assertNotNull(facture.getIdFacture());
     }
+    /*
     @Test
     public void testgetFacturesByFournisseur() throws ParseException {
         Set<Facture> factures =  factureService.getFacturesByFournisseur(2l);
@@ -69,6 +70,7 @@ public class FactureServiceImplTest {
             assertNotNull(facture.getIdFacture());
         }
     }
+     */
     @Test
     public void testCancelFacture() throws ParseException  {
         Facture sa = new Facture();
@@ -84,4 +86,3 @@ public class FactureServiceImplTest {
         assertNotNull(sa.getIdFacture());
     }
 }
-*/
