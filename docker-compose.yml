@@ -1,27 +1,29 @@
-version: '3'
+version: "3"
 services:
-  database:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tpachato
+  mysqldb:
+    container_name: mysqldb
+    image: mysql/mysql-server:8.0
+    restart: unless-stopped
     ports:
       - 3306:3306
-    networks:
-      - spring-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=tpachato
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    volumes:
+      - tpachato:/var/lib/mysql
 
-  spring-boot:
+  spring_app:
     image: onschebbi/springproject
     container_name: springapp
+    restart: on-failure
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/tpachato?autoReconnect=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/tpachato?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     ports:
       - 8089:8089
     depends_on:
-      - database
-    networks:
-      - spring-mysql
-    restart: on-failure
+      - mysqldb
 
-networks:
-  AppNet:
+volumes:
+  achatdb:

@@ -51,7 +51,7 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=NOSnos1312'
             }			
         }
-        
+        */
         stage('Build docker image'){
                                     steps{
                                         script{
@@ -67,7 +67,7 @@ pipeline {
         		    sh 'docker push onschebbi/springproject'
         		    }
         		    }
-        		    }*/
+        		    }
           stage('Docker compose') {
 
                                    steps {
