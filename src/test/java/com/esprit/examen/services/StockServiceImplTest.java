@@ -37,7 +37,7 @@ public class StockServiceImplTest {
         Stock savedStock= stockService.addStock(s);
         Assertions.assertEquals(expected+1, stockService.retrieveAllStocks().size());
         Assertions.assertNotNull(savedStock.getLibelleStock());
-        stockService.deleteStock(savedStock.getIdStock());
+//        stockService.deleteStock(savedStock.getIdStock());
     }
     @Test
     @Order(3)
