@@ -7,7 +7,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=xtF26;38.I3+y7Mj+#Rovc4Q8x@.b@gZ
+      - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=tpachato
       - MYSQL_USER=ons
       - MYSQL_PASSWORD=1234
