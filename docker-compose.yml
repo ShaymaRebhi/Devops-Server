@@ -7,7 +7,6 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=tpachato
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
@@ -26,4 +25,4 @@ services:
       - mysqldb
 
 volumes:
-  achatdb:
+  tpachato:
