@@ -80,17 +80,10 @@ agent any
 
 
                 }
-                post {
-                                                                success {
-                                                                     mail to: "shayma.rebhi@esprit.tn",
-                                                                     subject: "Pipeline Success",
-                                                                     body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
-                                                                }
-                                    failure {
-                                        mail to: "shayma.rebhi@esprit.tn",
-                                         subject: "Pipeline Failure",
-                                         body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
-                                    }
-                                    }
+               post {
+                      always {
+                          emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                      }
+                  }
 
       }

@@ -119,7 +119,7 @@
 						<version>1.0.1</version>
 					</dependency>
 					<!-- JUnit vintage engine to run JUnit 3 or JUnit 4 tests -->
-					
+
 					<dependency>
 						<groupId>org.junit.vintage</groupId>
 						<artifactId>junit-vintage-engine</artifactId>
