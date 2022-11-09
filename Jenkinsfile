@@ -78,14 +78,14 @@ agent any
                                        }
                                    }
 
-
+stage('Sending email'){
+	    steps {
+	        mail bcc: '', body: '''Hello from oumayma farhani,
+	        Devops Pipeline with success.
+	        Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'oumayma.farhani@esprit.tn'
+	             }
+	        }
                 }
-              stage('Sending email'){
-              	    steps {
-              	        mail bcc: '', body: '''Hello from oumayma farhani,
-              	        Devops Pipeline with success.
-              	        Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'hiba.elwafi@esprit.tn'
-              	             }
-              	        }
-}
+
+
       }
