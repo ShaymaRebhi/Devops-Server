@@ -80,9 +80,9 @@ agent any
 
 stage('Sending email'){
 	    steps {
-	        mail bcc: '', body: '''Hello from oumayma farhani,
-	        Devops Pipeline with success.
-	        Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'oumayma.farhani@esprit.tn'
+	        mail bcc: '', body: '''Salut oumayma farhani,
+	        Devops Pipeline se lance avec success.
+	        ''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'oumayma.farhani@esprit.tn'
 	             }
 	        }
                 }
