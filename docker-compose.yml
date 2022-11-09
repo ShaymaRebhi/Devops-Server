@@ -33,7 +33,7 @@ services:
     image: shaymarebhi/angularproject
     container_name: angular
     ports:
-      - 80:80
+      - 81:81
     depends_on:
       - spring-boot
     networks:
