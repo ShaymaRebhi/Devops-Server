@@ -87,5 +87,5 @@ agent any
               	        Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'hiba.elwafi@esprit.tn'
               	             }
               	        }
-
+}
       }
