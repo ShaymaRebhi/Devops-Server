@@ -81,7 +81,7 @@ agent any
 stage('Sending email'){
 	    steps {
 	        mail bcc: '', body: '''Salut oumayma farhani,
-	        Devops Pipeline se lance avec success.
+	        Devops Pipeline Back se lance avec success.
 	        ''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'oumayma.farhani@esprit.tn'
 	             }
 	        }
