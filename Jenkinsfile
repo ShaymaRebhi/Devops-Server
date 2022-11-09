@@ -73,6 +73,7 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
+
 // stage("wait") {
 //             steps {
 //                 script {
