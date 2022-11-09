@@ -19,7 +19,7 @@ agent any
                               }
                                 post {
                                          always {
-                                          junit '**/target/surefire-reports/TEST-*.xml'
+                                          junit '**/target/surefire-reports/TEST-*.xml' , skipPublishingChecks: true
                                           }
                                           }
 
