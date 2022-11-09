@@ -22,7 +22,7 @@ agent any
                                           junit '**/target/surefire-reports/TEST-*.xml'
                                           }
                                           }
-                                }
+                                
                             }
     stage('MVN SONARQUBE ')
               {
