@@ -38,7 +38,7 @@ pipeline {
                                       }
                                     }
 
-	 /* stage('NEXUS')
+	  stage('NEXUS')
         {
             steps{
                 echo "nexus"
@@ -46,12 +46,12 @@ pipeline {
             }
         }
         
-	  /*  stage('MVN SONARQUBE'){
+	    stage('MVN SONARQUBE'){
             steps{
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=NOSnos1312'
             }			
         }
-        */
+
        stage('Build docker image'){
                                     steps{
                                         script{
