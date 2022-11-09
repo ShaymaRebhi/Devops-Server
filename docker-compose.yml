@@ -30,9 +30,9 @@ services:
             "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
             "spring.jpa.hibernate.ddl-auto" : "update"
           }'
-      volumes:
-        - .m2:/root/.m2
-      stdin_open: true
-      tty: true
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 volumes:
   db:
