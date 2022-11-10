@@ -1,11 +1,12 @@
 pipeline{
 agent any
-	stage('Compile Maven Project'){
-                                                             steps{
-                                                                sh 'mvn  compile '
-                                                             }
-                                                         }
+
         stages{
+        stage('Compile Maven Project'){
+                                                                     steps{
+                                                                        sh 'mvn  compile '
+                                                                     }
+                                                                 }
  stage('Mock & JUnit') {
  steps {
 script {
