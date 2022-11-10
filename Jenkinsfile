@@ -1,5 +1,10 @@
 pipeline{
 agent any
+	stage('Compile Maven Project'){
+                                                             steps{
+                                                                sh 'mvn  compile '
+                                                             }
+                                                         }
         stages{
  stage('Mock & JUnit') {
  steps {
