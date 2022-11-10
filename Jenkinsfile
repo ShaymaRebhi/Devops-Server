@@ -1,7 +1,7 @@
 pipeline{
 agent any
         stages{
- stage('Testing process') {
+ stage('Mock & JUnit') {
  steps {
 script {
 sh 'echo "Mock & JUnit"'
