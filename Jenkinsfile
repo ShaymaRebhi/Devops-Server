@@ -22,6 +22,10 @@ pipeline {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
+    	stage('EMAIL ALERT') {
+                steps{
+                   emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'ons.chebbi@esprit.tn'
+                }
 	    
         stage('Testing maven') {
 		    steps {
