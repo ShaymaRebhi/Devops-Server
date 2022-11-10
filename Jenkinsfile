@@ -48,13 +48,6 @@ junit '**/target/surefire-reports/TEST-*.xml'
  }
  }
  }
-stage("Maven Build") {
-steps {
- script {
- sh "mvn package -DskipTests=true"
-}
- }
- }
 
  stage('Docker login') {
 
