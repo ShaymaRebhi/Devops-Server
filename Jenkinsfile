@@ -53,13 +53,6 @@ agent any
                              }
                          }
 
-		stage("PACKAGE") {
-            steps {
-                script {
-                    sh "mvn package -DskipTests=true"
-                }
-            }
-        }
 
 		 		 stage('Docker login') {
 
@@ -79,21 +72,6 @@ agent any
                                sh 'docker-compose up -d'
                                  }  }
 
-// stage("wait") {
-//             steps {
-//                 script {
-//                     sh "sleep 300"
-//                 }
-//             }
-//         }
-//           stage('JUNIT') {
-//                                        steps {
-//                                         script {
-//                                          sh 'echo "Test is processing ...."'
-//                                          sh 'mvn clean test  -Dtest="StockServiceImplTest"'
-//                                         }
-//                                        }
-//                                      }
 
         }
 
