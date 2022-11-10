@@ -2,24 +2,30 @@ pipeline{
 agent any
    stages{
 
-    stage('Compile Maven Project'){
+stage('Compile Maven Project'){
+                                                             steps{
+                                                                sh 'mvn  compile '
+                                                             }
+                                                         }
+    stage('MOCKiTO/JUNIT') {
+                 steps {
+                                    script {
+                                                    sh 'echo "Test is processing ...."'
+                                                     sh 'mvn test'
+                                     }
+                                     }
+                                      post {
+                                                                        always {
+                                                                              junit '**/target/surefire-reports/TEST-*.xml'
+                                                            }
+                                                                                                                                               }
+                                    }
+    stage('Buid Maven Project'){
                                                              steps{
                                                                 sh 'mvn  clean install -DskipTests '
                                                              }
                                                          }
-        stage('MOCKiTO/JUNIT') {
-                                      steps {
-                                       script {
-                                        sh 'echo "Test is processing ...."'
-                                        sh 'mvn test'
-                                       }
-                                      }
-                                      post {
-                                                                                          always {
-                                                                                              junit '**/target/surefire-reports/TEST-*.xml'
-                                                                                          }
-                                                                                      }
-                                    }
+
 
             stage('MVN SONARQUBE ')
                       {
