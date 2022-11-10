@@ -1,7 +1,13 @@
 pipeline{
 agent any
    stages{
-        stage('MOCK/JUNIT test') {
+
+    stage('Compile Maven Project'){
+                                                             steps{
+                                                                sh 'mvn  clean install -DskipTests '
+                                                             }
+                                                         }
+        stage('MOCKiTO/JUNIT') {
                                       steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
