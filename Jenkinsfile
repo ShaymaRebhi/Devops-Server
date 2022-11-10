@@ -7,7 +7,7 @@ stage('Compile Maven Project'){
                                                                 sh 'mvn  compile '
                                                              }
                                                          }
-    stage('MOCKiTO/JUNIT') {
+    stage('MOCKITO/JUNIT') {
                  steps {
                                     script {
                                                     sh 'echo "Test is processing ...."'
@@ -20,13 +20,7 @@ stage('Compile Maven Project'){
                                                             }
                                                                                                                                                }
                                     }
-    stage('Buid Maven Project'){
-                                                             steps{
-                                                                sh 'mvn  clean install -DskipTests '
-                                                             }
-                                                         }
-
-
+   
             stage('MVN SONARQUBE ')
                       {
                                                               steps{
