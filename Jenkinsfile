@@ -1,16 +1,10 @@
 pipeline{
 agent any
-  tools {
-     jdk 'JAVA_HOME'
-     maven 'M2_HOME'
-  }
-
-
         stages{
  stage('Testing process') {
  steps {
 script {
-sh 'echo "Test is processing ...."'
+sh 'echo "Mock & JUnit"'
 sh 'mvn test'
  }
  }
@@ -46,13 +40,6 @@ junit '**/target/surefire-reports/TEST-*.xml'
  script{
  sh 'docker build -t hibaef/springprojet .'
  }
- }
- }
-stage("Maven Build") {
-steps {
- script {
- sh "mvn package -DskipTests=true"
-}
  }
  }
 
