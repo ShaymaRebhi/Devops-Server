@@ -26,7 +26,7 @@ pipeline {
                 steps{
                    emailext body: 'your pipeline was successfully built !everything is so good  ', subject: 'build done', to: 'ons.chebbi@esprit.tn'
                 }
-	    
+
         stage('Testing maven') {
 		    steps {
 		    sh """mvn -version"""
