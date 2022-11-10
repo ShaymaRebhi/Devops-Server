@@ -4,7 +4,7 @@ agent any
  stage('Testing process') {
  steps {
 script {
-sh 'echo "Test is processing ...."'
+sh 'echo "Mock & JUnit"'
 sh 'mvn test'
  }
  }
