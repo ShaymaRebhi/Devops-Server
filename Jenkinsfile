@@ -9,21 +9,21 @@ agent any
 
 
 
-
- stage('MOCK/JUNIT') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn test'
-                               }
-                              }
-                                post {
-                                         always {
-                                          junit '**/target/surefire-reports/TEST-*.xml'
-                                          }
-                                          }
-
-                            }
+//
+//  stage('MOCK/JUNIT') {
+//                               steps {
+//                                script {
+//                                 sh 'echo "Test is processing ...."'
+//                                 sh 'mvn test'
+//                                }
+//                               }
+//                                 post {
+//                                          always {
+//                                           junit '**/target/surefire-reports/TEST-*.xml'
+//                                           }
+//                                           }
+//
+//                             }
     stage('MVN SONARQUBE ')
               {
                                                       steps{
