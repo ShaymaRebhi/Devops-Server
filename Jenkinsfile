@@ -27,7 +27,7 @@ agent any
     stage('MVN SONARQUBE ')
               {
                                                       steps{
-                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar  '
+                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -DskipTests '
                                                                  }
                                                                            }
 
@@ -41,7 +41,7 @@ agent any
                                                       {
                                                           steps{
                                                               echo "nexus"
-                                                               sh ' mvn  deploy -DskipTests'
+                                                               sh ' mvn  deploy -DskipTests -DskipTests'
                                                           }
                                                       }
 
