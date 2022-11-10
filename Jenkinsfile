@@ -1,12 +1,7 @@
 pipeline{
 agent any
-  tools {
-     jdk 'JAVA_HOME'
-     maven 'M2_HOME'
-  }
-
    stages{
-        stage('MOCK') {
+        stage('MOCK/JUNIT test') {
                                       steps {
                                        script {
                                         sh 'echo "Test is processing ...."'
@@ -27,7 +22,7 @@ agent any
                                                                          }
                                                                                    }
 
-                              stage('Build'){
+                              stage('Build Maven Project'){
                                                           steps{
                                                              sh 'mvn  clean install -DskipTests '
                                                           }
