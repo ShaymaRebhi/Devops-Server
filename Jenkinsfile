@@ -53,7 +53,7 @@ junit '**/target/surefire-reports/TEST-*.xml'
 
  steps {
  sh 'echo "login Docker ...."'
-sh 'docker login -u hibaef -p 13632307Hiba'
+sh 'docker login -u hibaef -p *******'
   }  }
  stage('Docker push') {
  steps {
@@ -66,12 +66,12 @@ sh 'docker push hibaef/springprojet'
   }  } }
 post {
  success {
-	 mail to: "hiba.elwafi@esprit.tn",
+	 mail to: "hibaef@esprit.tn",
 	subject: "Pipeline Backend Success ",
  	body: "Welcome to DevOps project Backend : Success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
 }
 	failure {
-          mail to: "hiba.elwafi@esprit.tn",
+          mail to: "hibaef@esprit.tn",
            subject: "Pipeline backend Failure",
            body: "Welcome to DevOps project Backend : Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
                     }
